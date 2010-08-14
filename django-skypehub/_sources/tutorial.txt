@@ -52,6 +52,8 @@ manage.py の startapp コマンドでアプリケーションを作成します
 
   python manage.py startapp hello
 
+INSTALLED_APPSにhelloを追加します。
+
 イベントのレシーバを記述する
 ----------------------------
 
@@ -79,5 +81,4 @@ Skype botがメッセージを受信した際に実行されるレシーバを�
 .. note::
 
   runskypebot コマンドは、起動時にアプリケーションディレクトリの `skypebot.py` という名前のファイルを自動的にロードします。
-
 
