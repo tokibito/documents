@@ -1,0 +1,10 @@
+.. _install:
+
+インストール
+============
+
+インストールは `easy_install` や `pip` コマンドで行えます。
+
+::
+
+  $ sudo easy_install bpmappers
