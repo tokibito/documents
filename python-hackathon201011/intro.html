@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Pythonのインストール &mdash; Python Hack-a-thon 2010.11 v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Python Hack-a-thon 2010.11 v1.0 documentation" href="index.html" />
+    <link rel="next" title="課題" href="problem.html" />
+    <link rel="prev" title="Python Hack-a-thon 2010.11 ハンズオン 初級" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="problem.html" title="課題"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Python Hack-a-thon 2010.11 ハンズオン 初級"
+             accesskey="P">前へ</a> |</li>
+        <li><a href="index.html">Python Hack-a-thon 2010.11 v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="python">
+<h1>Pythonのインストール<a class="headerlink" href="#python" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>インストールについてはGoogleで検索すればこと足りると思うので、あまり詳しい説明はここではしません。</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">入手先:</th><td class="field-body"><a class="reference external" href="http://www.python.org/download/">http://www.python.org/download/</a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="windows">
+<h2>Windowsの場合<a class="headerlink" href="#windows" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ol class="arabic simple">
+<li>インストーラを使用してインストールします</li>
+<li>環境変数のPathにPythonをインストールしたディレクトリとScriptsディレクトリを追加してください</li>
+</ol>
+<blockquote>
+XPの場合、[マイコンピュータ]のプロパティの[詳細設定]タブの[環境変数]から設定できます。</blockquote>
+</div>
+<div class="section" id="macosx">
+<h2>MacOSXの場合<a class="headerlink" href="#macosx" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>OSX10.5以上であれば、Pythonがインストールされています。</p>
+<p>それ以前のバージョン、または最新版を利用する場合は、MacPortsでインストールしたりMacPythonをダウンロードしてインストールしてください。</p>
+</div>
+<div class="section" id="ubuntu">
+<h2>Ubuntuの場合<a class="headerlink" href="#ubuntu" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>最初からPythonがインストールされています。</p>
+</div>
+</div>
+<div class="section" id="hello-world">
+<h1>Hello, world!<a class="headerlink" href="#hello-world" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>ターミナル(コマンドプロンプト)を起動して、 <tt class="docutils literal"><span class="pre">python</span></tt> と入力して実行してみましょう。
+Pythonが対話モードで起動します。</p>
+<p><tt class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></tt> という文字列が表示されれば、Pythonがプログラムを実行できる状態になっています。</p>
+<p><tt class="docutils literal"><span class="pre">Hello,</span> <span class="pre">world!</span></tt> という文字列を画面に出力する <tt class="docutils literal"><span class="pre">print</span></tt> 文の命令を入力して実行してみます。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="go">$ python</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s">&quot;Hello, world!&quot;</span>
+<span class="go">Hello, world!</span>
+</pre></div>
+</div>
+<p>表示されましたか？</p>
+</div>
+<div class="section" id="id1">
+<h1>データ型<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id2">
+<h2>整数<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">123</span>
+<span class="go">123</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>文字列<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>文字列はシングルクォートかダブルクォートで囲みます。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;abc&#39;</span>
+<span class="go">&#39;abc&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&quot;efg&quot;</span>
+<span class="go">&#39;efg&#39;</span>
+</pre></div>
+</div>
+<p>シングルクォートとダブルクォートで意味の違いはありません。</p>
+</div>
+<div class="section" id="id4">
+<h2>リスト<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>順序をもった値の集合です。異なる型の値でも同じリストに入れることができます。</p>
+<p>0から始まる添え字を使ってリスト中の値を取り出すことができます。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="go">[1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;abc&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="go">[1, &#39;abc&#39;, [1, 2, 3]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>辞書<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>添え字に文字列や数値、オブジェクトを使用できる集合です。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s">&#39;cd&#39;</span><span class="p">}</span>
+<span class="go">{&#39;a&#39;: 10, 2: &#39;cd&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s">&#39;cd&#39;</span><span class="p">}[</span><span class="s">&#39;a&#39;</span><span class="p">]</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s">&#39;cd&#39;</span><span class="p">}[</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">&#39;cd&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>タプル<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>値を変更できない集合です。リストと同様に添え字で値を取り出せます。</p>
+<p>辞書のキーとして使用することができます。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">(1, 2, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="mi">20</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">30</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">40</span><span class="p">}</span>
+<span class="go">{(0, 1): 30, (1, 0): 20, (0, 0): 10, (1, 1): 40}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>真偽値<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="bp">True</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="bp">False</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="none">
+<h2>None<a class="headerlink" href="#none" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>値がないことを表すときに使います。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="bp">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h1>演算子<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="go">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="go">-1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="go">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">/</span> <span class="mf">2.0</span>
+<span class="go">1.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;abc&#39;</span> <span class="o">+</span> <span class="s">&#39;efg&#39;</span>
+<span class="go">&#39;abcefg&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;ab&#39;</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="go">&#39;ababab&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="bp">False</span> <span class="ow">or</span> <span class="bp">True</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="go">[1, 2, 3, 4, 5, 6]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">3</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h1>スライス<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Pythonではリストに対して範囲を指定して新しいリストとして切り出したりできます。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="go">[2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">][</span><span class="mi">2</span><span class="p">:]</span>
+<span class="go">[3, 4, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">][:</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">[1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">[1, 2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">][::</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">[1, 3, 5]</span>
+</pre></div>
+</div>
+<p>文字列に対してもスライスは使えます。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;abcdef&#39;</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="go">&#39;cde&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;abcdef&#39;</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">&#39;abcd&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h1>変数<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>データを再利用するために名前を付けて保持しておくことができます。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span> <span class="o">=</span> <span class="s">&#39;abc&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">x</span><span class="p">,</span> <span class="n">foo</span>
+<span class="go">1 abc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="go">6</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h1>関数<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="go">30</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span> <span class="o">=</span> <span class="n">add</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="go">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add</span>
+<span class="go">&lt;function add at 0x00CC0C30&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h1>インデント<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Pythonではインデントは、文法として意味があります。関数や制御構造などで複数の命令のまとまりの範囲を示すために使います。</p>
+<p>ソースコード中のインデントに問題がある場合、IndentationErrorとなりプログラムは動作しません。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">say</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&quot;foo&quot;</span>
+<span class="gp">... </span>  <span class="k">print</span> <span class="s">&quot;bar&quot;</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">3</span>
+    <span class="k">print</span> <span class="s">&quot;bar&quot;</span>
+              <span class="o">^</span>
+<span class="nc">IndentationError</span>: <span class="n-Identifier">unindent does not match any outer indentation level</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h1>制御構造<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id14">
+<h2>条件分岐<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&#39;a is 10.&#39;</span>
+<span class="gp">... </span><span class="k">elif</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&#39;a is bigger than 20.&#39;</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&#39;other condition.&#39;</span>
+<span class="gp">...</span>
+<span class="go">a is 10.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>繰り返し(1)<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">[0, 1, 2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">i</span>
+<span class="gp">...</span>
+<span class="go">0</span>
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>繰り返し(2)<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">a</span>
+<span class="gp">... </span>    <span class="n">a</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="gp">...</span>
+<span class="go">5</span>
+<span class="go">4</span>
+<span class="go">3</span>
+<span class="go">2</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id17">
+<h1>ソースコードの再利用とモジュール<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Pythonではソースコードをファイルに入力して、読み込ませて実行させることができます。</p>
+<p>ソースコードのファイル名は英数と <tt class="docutils literal"><span class="pre">-</span></tt> (ハイフン)、 <tt class="docutils literal"><span class="pre">_</span></tt> (アンダースコア)を使用できます。2バイト文字(日本語)などは使えません。</p>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">ファイルをモジュールとして扱う場合、ハイフンはソースコード中ではマイナスとして解釈されてしまうため、モジュール名にはハイフンは使わないほうがよいです。</p>
+</div>
+<div class="section" id="id18">
+<h2>コメント<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ソースコード中に <tt class="docutils literal"><span class="pre">#</span> <span class="pre">コメント</span></tt> のように書くと、``#``から行末までの文字列はコメントとして扱われます。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">print</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>  <span class="c"># comment...</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h1>日本語の扱い<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Pythonでは日本語の文字列も扱えます。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s">&#39;こんにちは&#39;</span>
+<span class="go">こんにちは</span>
+</pre></div>
+</div>
+<div class="section" id="id20">
+<h2>文字コード<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>1バイト単位でデータを扱うコンピュータの場合、英数だけなら1バイトですべての文字を表せます。しかし、日本語などの文字の種類が多い言語を扱う場合はそれでは足りません。
+日本語は何バイトかのデータ列で文字を表現します。表現の種類は歴史的な事情もあって、いくつも存在します。
+最近はUTF-8という文字コードで扱えば大抵問題はないので、この名前を覚えておけばよいでしょう。</p>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">Windowsを使用している場合は、CP932(ShiftJIS)という文字コードも扱うことになるので注意してください</p>
+</div>
+<p>Wikipediaなどで文字コードについて詳しく載っているので、興味のある方は調べてみてください。</p>
+<ul class="simple">
+<li><a class="reference external" href="http://ja.wikipedia.org/wiki/%E6%96%87%E5%AD%97%E3%82%B3%E3%83%BC%E3%83%89">文字コード - Wikipedia</a></li>
+</ul>
+</div>
+<div class="section" id="unicode">
+<h2>ユニコード(Unicode)<a class="headerlink" href="#unicode" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>文字コードの一種です。Python2.Xでは、文字列はasciiのバイト列かUnicodeで文字列で文字列を扱います。
+大きな違いは文字の長さと1文字あたりのと使用バイト数の扱いです。</p>
+<p>asciiバイト列では、1文字は1～3バイト程度で表現します。(文字コードによって使用するバイト数や文字表現が変わります)</p>
+<div class="section" id="sample1-py">
+<h3>sample1.py<a class="headerlink" href="#sample1-py" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># coding: utf-8</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s">&#39;日本語&#39;</span>
+<span class="k">print</span> <span class="n">a</span>
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">repr</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c"># aの内部表現</span>
+</pre></div>
+</td></tr></table></div>
+<p>UTF-8エンコードでファイルを保存してターミナルから実行した結果を示します。</p>
+<div class="highlight-python"><pre>$ python sample1.py
+日本語
+9
+'\xe6\x97\xa5\xe6\x9c\xac\xe8\xaa\x9e'</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">Windowsの場合コマンドプロンプトでの文字コードがcp932になるので、この例のコードを実行すると文字化けします。</p>
+</div>
+<p>Unicode文字列では1文字は2バイトで表現します。(例外もあります)</p>
+</div>
+<div class="section" id="sample2-py">
+<h3>sample2.py<a class="headerlink" href="#sample2-py" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># coding: utf-8</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s">u&#39;日本語&#39;</span>
+<span class="k">print</span> <span class="n">a</span>
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">repr</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c"># aの内部表現</span>
+</pre></div>
+</td></tr></table></div>
+<p>UTF-8エンコードでファイルを保存してターミナル(コマンドプロンプト)から実行した結果を示します。</p>
+<div class="highlight-python"><pre>$ python sample2.py
+日本語
+3
+u'\u65e5\u672c\u8a9e'</pre>
+</div>
+<p>この例はWindowsでも正常に表示されます。</p>
+<p>ターミナルの対話モードで入力する場合と、ソースファイル内での扱いが異なることに注意してください。</p>
+<p>ソースコード中に日本語を記述する場合は、ファイルの先頭の行に <tt class="docutils literal"><span class="pre">#</span> <span class="pre">coding:</span> <span class="pre">utf-8</span></tt> のようにファイルの文字コードを指定する必要があります。</p>
+<p><a class="reference external" href="http://www.python.jp/doc/release/tut/node4.html#SECTION004230000000000000000">ソースコードの文字コード方式 (encoding)</a> も参照してください。</p>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">対話モードでの日本語入力は、はまりやすいポイントなので、慣れるまでは避けておくのが無難かもしれません。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id21">
+<h1>クラス<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">say</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">print</span> <span class="s">&#39;My name is </span><span class="si">%s</span><span class="s">.&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s">&#39;tokibito&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">say</span><span class="p">()</span>
+<span class="go">My name is tokibito.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id22">
+<h1>ファイルの読み書き<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id23">
+<h2>読み込み<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;test.txt&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="go">&#39;Python hack-a-thon\nhello\n&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id24">
+<h2>書き込み<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;output.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;test&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id25">
+<h2>参考<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://www.python.jp/doc/release/tut/node9.html#SECTION009200000000000000000">ファイルを読み書きする</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id27">
+<h1>サードパーティのモジュール<a class="headerlink" href="#id27" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="python-package-index-pypi">
+<h2>Python Package Index (PyPI)<a class="headerlink" href="#python-package-index-pypi" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>さまざまなサードパーティのモジュールが登録されているページです。</p>
+<ul class="simple">
+<li><a class="reference external" href="http://pypi.python.org/pypi">http://pypi.python.org/pypi</a></li>
+</ul>
+</div>
+<div class="section" id="setuptools">
+<h2>setuptools<a class="headerlink" href="#setuptools" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl class="docutils">
+<dt>Pythonのサードパーティモジュールをインストールするためのツールの一種です。インストールしておくと <tt class="docutils literal"><span class="pre">easy_intall</span></tt> コマンドが使えます。</dt>
+<dd><tt class="docutils literal"><span class="pre">easy_install</span></tt> コマンドを使うと、PyPIで公開されているモジュールを簡単にインストールすることができます。</dd>
+</dl>
+<ul class="simple">
+<li><a class="reference external" href="http://pypi.python.org/pypi/setuptools">http://pypi.python.org/pypi/setuptools</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Pythonのインストール</a><ul>
+<li><a class="reference internal" href="#windows">Windowsの場合</a></li>
+<li><a class="reference internal" href="#macosx">MacOSXの場合</a></li>
+<li><a class="reference internal" href="#ubuntu">Ubuntuの場合</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hello-world">Hello, world!</a></li>
+<li><a class="reference internal" href="#id1">データ型</a><ul>
+<li><a class="reference internal" href="#id2">整数</a></li>
+<li><a class="reference internal" href="#id3">文字列</a></li>
+<li><a class="reference internal" href="#id4">リスト</a></li>
+<li><a class="reference internal" href="#id5">辞書</a></li>
+<li><a class="reference internal" href="#id6">タプル</a></li>
+<li><a class="reference internal" href="#id7">真偽値</a></li>
+<li><a class="reference internal" href="#none">None</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">演算子</a></li>
+<li><a class="reference internal" href="#id9">スライス</a></li>
+<li><a class="reference internal" href="#id10">変数</a></li>
+<li><a class="reference internal" href="#id11">関数</a></li>
+<li><a class="reference internal" href="#id12">インデント</a></li>
+<li><a class="reference internal" href="#id13">制御構造</a><ul>
+<li><a class="reference internal" href="#id14">条件分岐</a></li>
+<li><a class="reference internal" href="#id15">繰り返し(1)</a></li>
+<li><a class="reference internal" href="#id16">繰り返し(2)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id17">ソースコードの再利用とモジュール</a><ul>
+<li><a class="reference internal" href="#id18">コメント</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id19">日本語の扱い</a><ul>
+<li><a class="reference internal" href="#id20">文字コード</a></li>
+<li><a class="reference internal" href="#unicode">ユニコード(Unicode)</a><ul>
+<li><a class="reference internal" href="#sample1-py">sample1.py</a></li>
+<li><a class="reference internal" href="#sample2-py">sample2.py</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id21">クラス</a></li>
+<li><a class="reference internal" href="#id22">ファイルの読み書き</a><ul>
+<li><a class="reference internal" href="#id23">読み込み</a></li>
+<li><a class="reference internal" href="#id24">書き込み</a></li>
+<li><a class="reference internal" href="#id25">参考</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id27">サードパーティのモジュール</a><ul>
+<li><a class="reference internal" href="#python-package-index-pypi">Python Package Index (PyPI)</a></li>
+<li><a class="reference internal" href="#setuptools">setuptools</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="index.html"
+                        title="前の章へ">Python Hack-a-thon 2010.11 ハンズオン 初級</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="problem.html"
+                        title="次の章へ">課題</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/intro.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>クイック検索</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="problem.html" title="課題"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Python Hack-a-thon 2010.11 ハンズオン 初級"
+             >前へ</a> |</li>
+        <li><a href="index.html">Python Hack-a-thon 2010.11 v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Shinya Okano.
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.4 で生成しました。
+    </div>
+  </body>
+</html>

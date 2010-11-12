@@ -1,0 +1,195 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>課題 &mdash; Python Hack-a-thon 2010.11 v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Python Hack-a-thon 2010.11 v1.0 documentation" href="index.html" />
+    <link rel="prev" title="Pythonのインストール" href="intro.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="intro.html" title="Pythonのインストール"
+             accesskey="P">前へ</a> |</li>
+        <li><a href="index.html">Python Hack-a-thon 2010.11 v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>課題<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>課題は順番にこなす必要はありません。面白そうだと思った課題にチャレンジしてみてください。</p>
+<p>もちろんこれ以外に自分で課題を持っているならば、それをやってみるのも良いでしょう。</p>
+<div class="section" id="socket">
+<h2>socketモジュールを使ってネットワーク通信<a class="headerlink" href="#socket" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">socketモジュールを使って足し算を行うサーバを作成してください。</p>
+<p>telnetコマンドで次のように <tt class="docutils literal"><span class="pre">整数+整数</span></tt> のように送信すると足し算の結果を返すサーバを作成してください。</p>
+<div class="highlight-python"><pre>$ telnet localhost 5000
+Trying 127.0.0.1...
+Connected to debian02.
+Escape character is '^]'.
+10+20
+30
+123+456
+579</pre>
+</div>
+</li>
+<li><p class="first">socketモジュールを使って、1.で作成したサーバにデータを送信して、結果を取得して画面に表示してください。</p>
+<p>引数を渡して実行を行うと結果を返してくれるようにしてみてください</p>
+<div class="highlight-python"><pre>$ python add.py 10+20
+30</pre>
+</div>
+</li>
+</ol>
+<div class="section" id="id2">
+<h3>参考ページ<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.python.jp/doc/release/lib/module-socket.html">http://www.python.jp/doc/release/lib/module-socket.html</a></li>
+<li><a class="reference external" href="http://www.python.jp/doc/release/lib/module-sys.html#l2h-5117">http://www.python.jp/doc/release/lib/module-sys.html#l2h-5117</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="sqlite3">
+<h2>sqlite3モジュールを使ってデータベース作成<a class="headerlink" href="#sqlite3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">引数から入力された品名と金額をsqlite3モジュールを使ってデータベースに入力してください</p>
+<div class="highlight-python"><pre>$ python inputdb.py ミカン 50
+$ python inputdb.py リンゴ 100</pre>
+</div>
+</li>
+<li><p class="first">1で作成したデータベースの内容を一覧表示してください</p>
+<div class="highlight-python"><pre>$ python listdb.py
+ミカン 50円
+リンゴ 100円</pre>
+</div>
+</li>
+<li><p class="first">引数から入力された品名と個数で合計金額を表示してください</p>
+<div class="highlight-python"><pre>$ python calc.py ミカン 3
+ミカンは3個で150円です</pre>
+</div>
+</li>
+</ol>
+<div class="section" id="id3">
+<h3>参考ページ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.python.jp/doc/release/lib/module-sqlite3.html">http://www.python.jp/doc/release/lib/module-sqlite3.html</a></li>
+<li><a class="reference external" href="http://www.python.jp/doc/release/lib/module-sys.html#l2h-5117">http://www.python.jp/doc/release/lib/module-sys.html#l2h-5117</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="feedparser-twitter-atom">
+<h2>feedparserモジュールでTwitter検索結果のAtomフィードを取得してみる<a class="headerlink" href="#feedparser-twitter-atom" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ol class="arabic simple">
+<li>対象のAtomフィードは <a class="reference external" href="http://search.twitter.com/search.atom?q=%23shibukawa">http://search.twitter.com/search.atom?q=%23shibukawa</a> です。これをfeedparserで取得して発言を一覧表示してみてください。</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">feedparserはサードパーティモジュールなので、インストールを行ってください。</p>
+</div>
+<div class="section" id="id4">
+<h3>参考ページ<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.feedparser.org/">http://www.feedparser.org/</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">課題</a><ul>
+<li><a class="reference internal" href="#socket">socketモジュールを使ってネットワーク通信</a><ul>
+<li><a class="reference internal" href="#id2">参考ページ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sqlite3">sqlite3モジュールを使ってデータベース作成</a><ul>
+<li><a class="reference internal" href="#id3">参考ページ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#feedparser-twitter-atom">feedparserモジュールでTwitter検索結果のAtomフィードを取得してみる</a><ul>
+<li><a class="reference internal" href="#id4">参考ページ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="intro.html"
+                        title="前の章へ">Pythonのインストール</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/problem.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>クイック検索</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="intro.html" title="Pythonのインストール"
+             >前へ</a> |</li>
+        <li><a href="index.html">Python Hack-a-thon 2010.11 v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Shinya Okano.
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.4 で生成しました。
+    </div>
+  </body>
+</html>
