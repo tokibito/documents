@@ -310,10 +310,27 @@ Pythonが対話モードで起動します。</p>
 <div class="section" id="id17">
 <h1>ソースコードの再利用とモジュール<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>Pythonではソースコードをファイルに入力して、読み込ませて実行させることができます。</p>
-<p>ソースコードのファイル名は英数と <tt class="docutils literal"><span class="pre">-</span></tt> (ハイフン)、 <tt class="docutils literal"><span class="pre">_</span></tt> (アンダースコア)を使用できます。2バイト文字(日本語)などは使えません。</p>
+<p>ソースコードのファイル名は英数と <tt class="docutils literal"><span class="pre">-</span></tt> (ハイフン)、 <tt class="docutils literal"><span class="pre">_</span></tt> (アンダースコア)などを使用できます。2バイト文字(日本語)などは使えません。</p>
 <div class="admonition note">
 <p class="first admonition-title">ノート</p>
 <p class="last">ファイルをモジュールとして扱う場合、ハイフンはソースコード中ではマイナスとして解釈されてしまうため、モジュール名にはハイフンは使わないほうがよいです。</p>
+</div>
+<p>以下のコードを <tt class="docutils literal"><span class="pre">test.py</span></tt> という名前で保存します。Pythonのソースファイルの拡張子は <tt class="docutils literal"><span class="pre">.py</span></tt> です。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="k">print</span> <span class="n">add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>実行するには、ターミナル(コマンドプロンプト)からPythonを起動するときに、引数でファイルを指定します。</p>
+<div class="highlight-python"><pre>$ python test.py
+30
+15</pre>
 </div>
 <div class="section" id="id18">
 <h2>コメント<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -322,16 +339,25 @@ Pythonが対話モードで起動します。</p>
 </pre></div>
 </td></tr></table></div>
 </div>
-</div>
 <div class="section" id="id19">
-<h1>日本語の扱い<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h2>モジュール<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>一つのプログラムを複数のソースファイルで構成することもできます。Pythonでは外部のソースファイル(<strong>モジュール</strong>)に書かれた関数などを読み込んで使用することができます。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span>
+<span class="go">&#39;win32&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id20">
+<h1>日本語の扱い<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>Pythonでは日本語の文字列も扱えます。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s">&#39;こんにちは&#39;</span>
 <span class="go">こんにちは</span>
 </pre></div>
 </div>
-<div class="section" id="id20">
-<h2>文字コード<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id21">
+<h2>文字コード<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>1バイト単位でデータを扱うコンピュータの場合、英数だけなら1バイトですべての文字を表せます。しかし、日本語などの文字の種類が多い言語を扱う場合はそれでは足りません。
 日本語は何バイトかのデータ列で文字を表現します。表現の種類は歴史的な事情もあって、いくつも存在します。
 最近はUTF-8という文字コードで扱えば大抵問題はないので、この名前を覚えておけばよいでしょう。</p>
@@ -404,8 +430,8 @@ u'\u65e5\u672c\u8a9e'</pre>
 </div>
 </div>
 </div>
-<div class="section" id="id21">
-<h1>クラス<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id22">
+<h1>クラス<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
@@ -418,10 +444,10 @@ u'\u65e5\u672c\u8a9e'</pre>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id22">
-<h1>ファイルの読み書き<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="id23">
-<h2>読み込み<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h1>ファイルの読み書き<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id24">
+<h2>読み込み<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;test.txt&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="go">&#39;Python hack-a-thon\nhello\n&#39;</span>
@@ -429,23 +455,23 @@ u'\u65e5\u672c\u8a9e'</pre>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id24">
-<h2>書き込み<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id25">
+<h2>書き込み<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;output.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;test&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id25">
-<h2>参考<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id26">
+<h2>参考<a class="headerlink" href="#id26" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://www.python.jp/doc/release/tut/node9.html#SECTION009200000000000000000">ファイルを読み書きする</a></li>
 </ul>
 </div>
 </div>
-<div class="section" id="id27">
-<h1>サードパーティのモジュール<a class="headerlink" href="#id27" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id28">
+<h1>サードパーティのモジュール<a class="headerlink" href="#id28" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="python-package-index-pypi">
 <h2>Python Package Index (PyPI)<a class="headerlink" href="#python-package-index-pypi" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>さまざまなサードパーティのモジュールが登録されているページです。</p>
@@ -503,10 +529,11 @@ u'\u65e5\u672c\u8a9e'</pre>
 </li>
 <li><a class="reference internal" href="#id17">ソースコードの再利用とモジュール</a><ul>
 <li><a class="reference internal" href="#id18">コメント</a></li>
+<li><a class="reference internal" href="#id19">モジュール</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id19">日本語の扱い</a><ul>
-<li><a class="reference internal" href="#id20">文字コード</a></li>
+<li><a class="reference internal" href="#id20">日本語の扱い</a><ul>
+<li><a class="reference internal" href="#id21">文字コード</a></li>
 <li><a class="reference internal" href="#unicode">ユニコード(Unicode)</a><ul>
 <li><a class="reference internal" href="#sample1-py">sample1.py</a></li>
 <li><a class="reference internal" href="#sample2-py">sample2.py</a></li>
@@ -514,14 +541,14 @@ u'\u65e5\u672c\u8a9e'</pre>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id21">クラス</a></li>
-<li><a class="reference internal" href="#id22">ファイルの読み書き</a><ul>
-<li><a class="reference internal" href="#id23">読み込み</a></li>
-<li><a class="reference internal" href="#id24">書き込み</a></li>
-<li><a class="reference internal" href="#id25">参考</a></li>
+<li><a class="reference internal" href="#id22">クラス</a></li>
+<li><a class="reference internal" href="#id23">ファイルの読み書き</a><ul>
+<li><a class="reference internal" href="#id24">読み込み</a></li>
+<li><a class="reference internal" href="#id25">書き込み</a></li>
+<li><a class="reference internal" href="#id26">参考</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id27">サードパーティのモジュール</a><ul>
+<li><a class="reference internal" href="#id28">サードパーティのモジュール</a><ul>
 <li><a class="reference internal" href="#python-package-index-pypi">Python Package Index (PyPI)</a></li>
 <li><a class="reference internal" href="#setuptools">setuptools</a></li>
 </ul>
