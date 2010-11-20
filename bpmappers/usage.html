@@ -69,11 +69,13 @@
 <span class="go">{&#39;username&#39;: &#39;wozozo&#39;, &#39;num&#39;: 123}</span>
 </pre></div>
 </div>
-<p>この例では、Personクラスのオブジェクトの要素を辞書にマッピングしています。</p>
+<p>この例では、Personクラスのオブジェクトの要素を辞書にマッピングしています。
+<cite>bpmappers.Mapper</cite> クラスを継承して、各フィールドに対応するマッピングをクラス属性に定義します。</p>
 </div>
 <div class="section" id="django">
 <h2>Djangoモデルからマッパークラスを作成する<a class="headerlink" href="#django" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>Djangoのモデルをマッピングする際には、マッパークラスを簡単に作成することができます。</p>
+<p>Djangoのモデルをマッピングする場合、ヘルパーを使ってマッピングを簡単に作成することができます。
+<tt class="docutils literal"><span class="pre">bpmappers.djangomodel.ModelMapper</span></tt> を使用した例を示します。</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers.djangomodel</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -93,11 +95,50 @@
 </div>
 <div class="section" id="id3">
 <h2>別のマッパーへの委譲<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>特定のフィールドのマッピングを別のマッパークラスに委譲することができます。</p>
+<p>特定のフィールドのマッピングを別のマッパークラスに委譲するには、 <tt class="docutils literal"><span class="pre">DelegateField</span></tt> や <tt class="docutils literal"><span class="pre">ListDelegateField</span></tt> を使用します。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span>  <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span><span class="p">,</span> <span class="n">DelegateField</span><span class="p">,</span> <span class="n">ListDelegateField</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">author</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">author</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">PersonMapper</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">name</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">BookMapper</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">name</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="n">author</span> <span class="o">=</span> <span class="n">DelegateField</span><span class="p">(</span><span class="n">PersonMapper</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s">&#39;wozozo&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">Book</span><span class="p">(</span><span class="s">&#39;python book&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapper</span> <span class="o">=</span> <span class="n">BookMapper</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mapper</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+<span class="go">{&#39;name&#39;: &#39;python book&#39;, &#39;author&#39;: {&#39;name&#39;: &#39;wozozo&#39;}}</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Team</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">members</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">members</span> <span class="o">=</span> <span class="n">members</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">TeamMapper</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">name</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="n">members</span> <span class="o">=</span> <span class="n">ListDelegateField</span><span class="p">(</span><span class="n">PersonMapper</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s">&#39;wozozo&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s">&#39;moriyoshi&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Team</span><span class="p">(</span><span class="s">&#39;php&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mapper</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+<span class="go">{&#39;name&#39;: &#39;php&#39;, &#39;members&#39;: [{&#39;name&#39;: &#39;wozozo&#39;}, {&#39;name&#39;: &#39;moriyoshi&#39;}]}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="id4">
-<h2>フック<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>各フィールドのマッピング処理にフックすることができます。</p>
+<h2>フックポイント<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>マッピング処理の途中で何か独自の処理を行いたい場合、いくつかのフックポイントを使用できます。</p>
 </div>
 </div>
 

@@ -68,7 +68,7 @@
     <span class="k">return</span> <span class="p">{</span>
          <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">team</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
          <span class="s">&#39;point&#39;</span><span class="p">:</span> <span class="n">team</span><span class="o">.</span><span class="n">point</span><span class="p">,</span>
-         <span class="s">&#39;persons&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">_map_person</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">team</span><span class="o">.</span><span class="n">persons</span><span class="p">],</span>
+         <span class="s">&#39;persons&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">_map_person</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">team</span><span class="o">.</span><span class="n">persons</span><span class="o">.</span><span class="n">all</span><span class="p">()],</span>
     <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">response_json</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -90,7 +90,7 @@
     <span class="k">return</span> <span class="p">{</span>
          <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">team</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
          <span class="s">&#39;point&#39;</span><span class="p">:</span> <span class="n">team</span><span class="o">.</span><span class="n">point</span><span class="p">,</span>
-         <span class="s">&#39;persons&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">_map_person</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">team</span><span class="o">.</span><span class="n">persons</span><span class="p">],</span>
+         <span class="s">&#39;persons&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">_map_person</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">team</span><span class="o">.</span><span class="n">persons</span><span class="o">.</span><span class="n">all</span><span class="p">()],</span>
     <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">_map_person_only_name</span><span class="p">(</span><span class="n">person</span><span class="p">):</span>
@@ -103,7 +103,7 @@
     <span class="s">&quot; teamオブジェクトのマッピング(名前のみ) &quot;</span>
     <span class="k">return</span> <span class="p">{</span>
          <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">team</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-         <span class="s">&#39;persons&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">_map_person_only_name</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">team</span><span class="o">.</span><span class="n">persons</span><span class="p">],</span>
+         <span class="s">&#39;persons&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">_map_person_only_name</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">team</span><span class="o">.</span><span class="n">persons</span><span class="o">.</span><span class="n">all</span><span class="p">()],</span>
     <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">response_json</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -131,12 +131,12 @@
 <span class="k">class</span> <span class="nc">TeamPersonNameMapper</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
     <span class="s">&quot; teamオブジェクトのマッピング(名前のみ) &quot;</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">()</span>
-    <span class="n">persons</span> <span class="o">=</span> <span class="n">ListDelegateField</span><span class="p">(</span><span class="n">PersonNameMapper</span><span class="p">)</span>
+    <span class="n">persons</span> <span class="o">=</span> <span class="n">ListDelegateField</span><span class="p">(</span><span class="n">PersonNameMapper</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">manager</span><span class="p">:</span><span class="n">manager</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 
 <span class="k">class</span> <span class="nc">TeamMapper</span><span class="p">(</span><span class="n">TeamPersonNameMapper</span><span class="p">):</span>
     <span class="s">&quot; teamオブジェクトのマッピング &quot;</span>
     <span class="n">point</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">()</span>
-    <span class="n">persons</span> <span class="o">=</span> <span class="n">ListDelegateField</span><span class="p">(</span><span class="n">PersonMapper</span><span class="p">)</span>
+    <span class="n">persons</span> <span class="o">=</span> <span class="n">ListDelegateField</span><span class="p">(</span><span class="n">PersonMapper</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">manager</span><span class="p">:</span><span class="n">manager</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 
 <span class="k">def</span> <span class="nf">response_json</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
