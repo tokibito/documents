@@ -53,7 +53,7 @@
 <div class="section" id="id2">
 <h2>シンプルなマッピング<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>シンプルなオブジェクトのマッピング例を以下に示します。</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span> <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span> <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
@@ -95,8 +95,8 @@
 </div>
 <div class="section" id="id3">
 <h2>別のマッパーへの委譲<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>特定のフィールドのマッピングを別のマッパークラスに委譲するには、 <tt class="docutils literal"><span class="pre">DelegateField</span></tt> や <tt class="docutils literal"><span class="pre">ListDelegateField</span></tt> を使用します。</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span>  <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span><span class="p">,</span> <span class="n">DelegateField</span><span class="p">,</span> <span class="n">ListDelegateField</span>
+<p>特定のフィールドのマッピングを別のマッパークラスに委譲するには、 <tt class="docutils literal"><span class="pre">DelegateField</span></tt> を使用します。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span>  <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span><span class="p">,</span> <span class="n">DelegateField</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
@@ -118,7 +118,16 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mapper</span> <span class="o">=</span> <span class="n">BookMapper</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mapper</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
 <span class="go">{&#39;name&#39;: &#39;python book&#39;, &#39;author&#39;: {&#39;name&#39;: &#39;wozozo&#39;}}</span>
-<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="id4">
+<h3>リストのマッピング<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>リストなどのシーケンスをマッピングを委譲するには、 <tt class="docutils literal"><span class="pre">ListDelegateField</span></tt> を使用します。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span>  <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span><span class="p">,</span> <span class="n">ListDelegateField</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Team</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">members</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
@@ -131,14 +140,48 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s">&#39;wozozo&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s">&#39;moriyoshi&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Team</span><span class="p">(</span><span class="s">&#39;php&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapper</span> <span class="o">=</span> <span class="n">TeamMapper</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mapper</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
 <span class="go">{&#39;name&#39;: &#39;php&#39;, &#39;members&#39;: [{&#39;name&#39;: &#39;wozozo&#39;}, {&#39;name&#39;: &#39;moriyoshi&#39;}]}</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>フックポイント<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+<div class="section" id="id5">
+<h2>フックポイント<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>マッピング処理の途中で何か独自の処理を行いたい場合、いくつかのフックポイントを使用できます。</p>
+<div class="section" id="mapper-filter-foo">
+<h3>Mapper.filter_FOO<a class="headerlink" href="#mapper-filter-foo" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>フィールドの値変換の前に実行されます。FOOはフィールド名に置き換えてください。</p>
+<p><tt class="docutils literal"><span class="pre">NonKeyField</span></tt> を使った場合、ここでマッピングに利用する値を生成することができます。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span> <span class="n">Mapper</span><span class="p">,</span> <span class="n">NonKeyField</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyMapper</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">value</span> <span class="o">=</span> <span class="n">NonKeyField</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">filter_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="mi">10</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapper</span> <span class="o">=</span> <span class="n">MyMapper</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapper</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+<span class="go">{&#39;value&#39;: 10}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mapper-after-filter-foo">
+<h3>Mapper.after_filter_FOO<a class="headerlink" href="#mapper-after-filter-foo" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>フィールドの値変換の後に実行されます。FOOはフィールド名に置き換えてください。</p>
+</div>
+<div class="section" id="mapper-attach-foo">
+<h3>Mapper.attach_FOO<a class="headerlink" href="#mapper-attach-foo" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>マッピングの結果の辞書に値を追加する前に実行されます。値を追加しない場合や、値の追加位置を変更する場合などに使用できます。</p>
+</div>
+<div class="section" id="field-callback">
+<h3>Field.callback<a class="headerlink" href="#field-callback" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>フィールドの値変換の前に実行されます。 <tt class="docutils literal"><span class="pre">filter_FOO</span></tt> の後にフィールドクラスで実行されます。</p>
+</div>
+<div class="section" id="field-after-callback">
+<h3>Field.after_callback<a class="headerlink" href="#field-after-callback" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>フィールドの値変換の後に実行されます。 <tt class="docutils literal"><span class="pre">after_filter_FOO</span></tt> の前にフィールドクラスで実行されます。</p>
+</div>
 </div>
 </div>
 
