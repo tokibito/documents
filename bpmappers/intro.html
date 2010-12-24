@@ -54,7 +54,7 @@
 <p>オブジェクトをJSONやXMLへシリアライズする際などに役立ちます。</p>
 <div class="section" id="id2">
 <h2>背景<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>レスポンスをJSONで返すとき、JSONのデータとモデルが一対一にならないことは頻繁にありました。</p>
+<p>レスポンスをJSONで返すとき、JSONのデータとモデルが一対一にならないことが頻繁にありました。</p>
 <p>例を示します。Personモデルを複数所有するTeamモデルがあったとします。TeamモデルのオブジェクトをJSONで返す <cite>response_json</cite> 関数を次のように書きました。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">_map_person</span><span class="p">(</span><span class="n">person</span><span class="p">):</span>
     <span class="s">&quot; personオブジェクトのマッピング &quot;</span>
@@ -72,7 +72,7 @@
     <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">response_json</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># Djangoのマネージャを使用しています</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>  <span class="c"># Djangoのマネージャを使用しています</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">_map_team</span><span class="p">(</span><span class="n">team</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -107,11 +107,11 @@
     <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">response_json</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">_map_team</span><span class="p">(</span><span class="n">team</span><span class="p">)))</span>
 
 <span class="k">def</span> <span class="nf">response_json_name</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">_map_team_person_name</span><span class="p">(</span><span class="n">team</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -139,11 +139,11 @@
     <span class="n">persons</span> <span class="o">=</span> <span class="n">ListDelegateField</span><span class="p">(</span><span class="n">PersonMapper</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">manager</span><span class="p">:</span><span class="n">manager</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 
 <span class="k">def</span> <span class="nf">response_json</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">TeamMapper</span><span class="p">(</span><span class="n">team</span><span class="p">)</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()))</span>
 
 <span class="k">def</span> <span class="nf">response_json_name</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">TeamPersonNameMapper</span><span class="p">(</span><span class="n">team</span><span class="p">)</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()))</span>
 </pre></div>
 </div>
