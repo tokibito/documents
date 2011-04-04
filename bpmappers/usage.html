@@ -7,14 +7,14 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>使い方 &mdash; bpmappers v0.3 documentation</title>
+    <title>使い方 &mdash; bpmappers v0.4dev documentation</title>
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/print.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.3',
+        VERSION:     '0.4dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,13 +25,13 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="bpmappers v0.3 documentation" href="index.html" />
+    <link rel="top" title="bpmappers v0.4dev documentation" href="index.html" />
     <link rel="next" title="同じ階層にマッピング結果をマージする" href="flatten.html" />
     <link rel="prev" title="インストール" href="install.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="_static/beproud.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>bpmappers v0.3 documentation</span></a></h1>
+          <span>bpmappers v0.4dev documentation</span></a></h1>
         <h2 class="heading"><span>使い方</span></h2>
       </div>
       <div class="topnav">
@@ -51,7 +51,20 @@
   <div class="section" id="usage">
 <span id="id1"></span><h1>使い方<a class="headerlink" href="#usage" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="id2">
-<h2>シンプルなマッピング<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>マッピング定義<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>bpmappers を使ったマッピング定義の基本的な形は次のようになります。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span> <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span>
+<span class="k">class</span> <span class="nc">MyMapper</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+    <span class="n">mapping_to</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">(</span><span class="s">&#39;mapping_from&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">bpmappers.Mapper</span></tt> クラスを継承したクラスを定義します。
+各フィールドに対応するマッピングをクラス属性に <tt class="docutils literal"><span class="pre">RawField</span></tt> で定義します。
+<tt class="docutils literal"><span class="pre">mapping_to</span></tt> はマッピング後のフィールド名、 <tt class="docutils literal"><span class="pre">mapping_from</span></tt> はマッピング対象のフィールド名です。
+<tt class="docutils literal"><span class="pre">mapping_to</span></tt> と <tt class="docutils literal"><span class="pre">mapping_from</span></tt> が同じになる場合、 <tt class="docutils literal"><span class="pre">mapping_from</span></tt> を省略できます。</p>
+</div>
+<div class="section" id="id3">
+<h2>シンプルなマッピング<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>シンプルなオブジェクトのマッピング例を以下に示します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span> <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -70,11 +83,11 @@
 </pre></div>
 </div>
 <p>この例では、Personクラスのオブジェクトの要素を辞書にマッピングしています。
-<cite>bpmappers.Mapper</cite> クラスを継承して、各フィールドに対応するマッピングをクラス属性に定義します。</p>
+出力される辞書では、 <tt class="docutils literal"><span class="pre">Person.name</span></tt> の値が <tt class="docutils literal"><span class="pre">username</span></tt> キーの値に、 <tt class="docutils literal"><span class="pre">Person.value</span></tt> の値が、 <tt class="docutils literal"><span class="pre">num</span></tt> キーの値にそれぞれマッピングされています。</p>
 </div>
 <div class="section" id="django">
 <h2>Djangoモデルからマッパークラスを作成する<a class="headerlink" href="#django" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>Djangoのモデルをマッピングする場合、ヘルパーを使ってマッピングを簡単に作成することができます。
+<p>Djangoのモデルをマッピングする場合、ヘルパーを使ってマッピングを簡単に定義することができます。
 <tt class="docutils literal"><span class="pre">bpmappers.djangomodel.ModelMapper</span></tt> を使用した例を示します。</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers.djangomodel</span> <span class="kn">import</span> <span class="o">*</span>
@@ -92,9 +105,12 @@
 <span class="go">{&#39;name&#39;: &#39;wozozo&#39;, &#39;val&#39;: 123}</span>
 </pre></div>
 </div>
+<p><tt class="docutils literal"><span class="pre">bpmappers.djangomodel.ModelMapper</span></tt> を継承したクラスを定義し、ModelMapperを継承したクラスには <tt class="docutils literal"><span class="pre">Meta</span></tt> サブクラスを定義しています。
+<tt class="docutils literal"><span class="pre">Meta.model</span></tt> にDjangoのモデルクラスを指定することで、モデルのフィールドから自動的にマッピング定義が生成されます。
+この例では、PersonモデルクラスからPersonMapperクラスを生成しています。</p>
 </div>
-<div class="section" id="id3">
-<h2>別のマッパーへの委譲<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id4">
+<h2>別のマッパーへの委譲<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>特定のフィールドのマッピングを別のマッパークラスに委譲するには、 <tt class="docutils literal"><span class="pre">DelegateField</span></tt> を使用します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span>  <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span><span class="p">,</span> <span class="n">DelegateField</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -120,9 +136,11 @@
 <span class="go">{&#39;name&#39;: &#39;python book&#39;, &#39;author&#39;: {&#39;name&#39;: &#39;wozozo&#39;}}</span>
 </pre></div>
 </div>
-<div class="section" id="id4">
-<h3>リストのマッピング<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>リストなどのシーケンスをマッピングを委譲するには、 <tt class="docutils literal"><span class="pre">ListDelegateField</span></tt> を使用します。</p>
+<p><tt class="docutils literal"><span class="pre">bpmappers.DelegateField</span></tt> には、引数としてMapperを継承したクラスを指定します。
+この例では、 <tt class="docutils literal"><span class="pre">BookMapper.author</span></tt> の値は、 <tt class="docutils literal"><span class="pre">PersonMapper</span></tt> を使ってマッピングを行うように定義されています。</p>
+<div class="section" id="id5">
+<h3>リストのマッピング<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>リストなどのシーケンスのマッピングを委譲するには、 <tt class="docutils literal"><span class="pre">ListDelegateField</span></tt> を使用します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span>  <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span><span class="p">,</span> <span class="n">ListDelegateField</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
@@ -145,11 +163,13 @@
 <span class="go">{&#39;name&#39;: &#39;php&#39;, &#39;members&#39;: [{&#39;name&#39;: &#39;wozozo&#39;}, {&#39;name&#39;: &#39;moriyoshi&#39;}]}</span>
 </pre></div>
 </div>
+<p><tt class="docutils literal"><span class="pre">bpmappers.ListDelegateField</span></tt> には、引数としてMapperを継承したクラスを指定します。
+この例では、 <tt class="docutils literal"><span class="pre">TeamMapper.members</span></tt> の値はリストとして展開されて、 <tt class="docutils literal"><span class="pre">PersonMapper</span></tt> を使ってマッピングを行うように定義されています。</p>
 </div>
 </div>
-<div class="section" id="id5">
-<h2>フックポイント<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>マッピング処理の途中で何か独自の処理を行いたい場合、いくつかのフックポイントを使用できます。</p>
+<div class="section" id="id6">
+<h2>フックポイント<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>マッピング処理の途中で何か追加の処理を行いたい場合、いくつかのフックポイントを使用できます。</p>
 <div class="section" id="mapper-filter-foo">
 <h3>Mapper.filter_FOO<a class="headerlink" href="#mapper-filter-foo" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>フィールドの値変換の前に実行されます。FOOはフィールド名に置き換えてください。</p>

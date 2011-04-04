@@ -7,14 +7,14 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>リファレンス &mdash; bpmappers v0.3 documentation</title>
+    <title>リファレンス &mdash; bpmappers v0.4dev documentation</title>
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/print.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.3',
+        VERSION:     '0.4dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,12 +25,12 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="bpmappers v0.3 documentation" href="index.html" />
+    <link rel="top" title="bpmappers v0.4dev documentation" href="index.html" />
     <link rel="prev" title="同じ階層にマッピング結果をマージする" href="flatten.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="_static/beproud.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>bpmappers v0.3 documentation</span></a></h1>
+          <span>bpmappers v0.4dev documentation</span></a></h1>
         <h2 class="heading"><span>リファレンス</span></h2>
       </div>
       <div class="topnav">
@@ -124,7 +124,7 @@
 <em class="property">class </em><tt class="descname">ModelMapper</tt><big>(</big><em>data=None</em>, <em>**options</em><big>)</big><a class="headerlink" href="#ModelMapper" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
-<p>Mapperクラスと同様です。</p>
+<p>Djangoモデルクラスからマッピング定義を生成します。</p>
 </div>
 <div class="section" id="class-nonkeyfield">
 <h2>class NonKeyField<a class="headerlink" href="#class-nonkeyfield" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -134,6 +134,15 @@
 <dd></dd></dl>
 
 <p>マッピング対象のdataにキーがない場合に使用します。</p>
+</div>
+<div class="section" id="class-stubfield">
+<h2>class StubField<a class="headerlink" href="#class-stubfield" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl class="class">
+<dt id="StubField">
+<em class="property">class </em><tt class="descname">StubField</tt><big>(</big><span class="optional">[</span><em>stub={}</em>, <em>*args</em>, <em>**kwargs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#StubField" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
+<p>stubで指定した固定値を返すフィールドです。</p>
 </div>
 <div class="section" id="class-field">
 <h2>class Field<a class="headerlink" href="#class-field" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -165,12 +174,20 @@
 <h2>class DelegateField<a class="headerlink" href="#class-delegatefield" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <dl class="class">
 <dt id="DelegateField">
-<em class="property">class </em><tt class="descname">DelegateField</tt><big>(</big><em>mapper_class</em><span class="optional">[</span>, <em>key=None</em>, <em>callback=None</em>, <em>before_filter=None</em>, <em>required=True</em>, <em>*args</em>, <em>**kwargs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#DelegateField" title="この定義へのパーマリンク">¶</a></dt>
+<em class="property">class </em><tt class="descname">DelegateField</tt><big>(</big><em>mapper_class</em><span class="optional">[</span>, <em>key=None</em>, <em>callback=None</em>, <em>before_filter=None</em>, <em>required=True</em>, <em>attach_parent=False</em>, <em>*args</em>, <em>**kwargs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#DelegateField" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="DelegateField.before_filiter">
 <tt class="descclassname">DelegateField.</tt><tt class="descname">before_filiter</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#DelegateField.before_filiter" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="class-nonkeydelegatefield">
+<h2>class NonKeyDelegateField<a class="headerlink" href="#class-nonkeydelegatefield" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<dl class="class">
+<dt id="NonKeyDelegateField">
+<em class="property">class </em><tt class="descname">NonKeyDelegateField</tt><big>(</big><em>mapper_class</em><span class="optional">[</span>, <em>callback=None</em>, <em>filter=None</em>, <em>required=True</em>, <em>attach_parent=False</em>, <em>*args</em>, <em>**kwargs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#NonKeyDelegateField" title="この定義へのパーマリンク">¶</a></dt>
 <dd></dd></dl>
 
 </div>

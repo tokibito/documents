@@ -7,14 +7,14 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>概要 &mdash; bpmappers v0.3 documentation</title>
+    <title>概要 &mdash; bpmappers v0.4dev documentation</title>
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/print.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.3',
+        VERSION:     '0.4dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,13 +25,13 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="bpmappers v0.3 documentation" href="index.html" />
+    <link rel="top" title="bpmappers v0.4dev documentation" href="index.html" />
     <link rel="next" title="インストール" href="install.html" />
     <link rel="prev" title="bpmappers ドキュメント" href="index.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="_static/beproud.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>bpmappers v0.3 documentation</span></a></h1>
+          <span>bpmappers v0.4dev documentation</span></a></h1>
         <h2 class="heading"><span>概要</span></h2>
       </div>
       <div class="topnav">
@@ -55,7 +55,7 @@
 <div class="section" id="id2">
 <h2>背景<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>レスポンスをJSONで返すとき、JSONのデータとモデルが一対一にならないことが頻繁にありました。</p>
-<p>例を示します。Personモデルを複数所有するTeamモデルがあったとします。TeamモデルのオブジェクトをJSONで返す <cite>response_json</cite> 関数を次のように書きました。</p>
+<p>例を示します。Personモデルを複数所有するTeamモデルがあったとします。TeamモデルのオブジェクトをJSONで返す <tt class="docutils literal"><span class="pre">response_json</span></tt> 関数を次のように書きました。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">_map_person</span><span class="p">(</span><span class="n">person</span><span class="p">):</span>
     <span class="s">&quot; personオブジェクトのマッピング &quot;</span>
     <span class="k">return</span> <span class="p">{</span>
@@ -147,7 +147,7 @@
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">TeamPersonNameMapper</span><span class="p">(</span><span class="n">team</span><span class="p">)</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()))</span>
 </pre></div>
 </div>
-<p>似たようなマッピングは、継承を使って定義しています。リスト内包表記は <cite>ListDelegateField</cite> で置き換えられています。</p>
+<p>似たようなマッピングは、継承を使って定義しています。リスト内包表記は <tt class="docutils literal"><span class="pre">ListDelegateField</span></tt> で置き換えられています。</p>
 <p>また、Mapperクラスにはフックポイントがいくつか用意されているため、後の変更や複雑なマッピングに対しても柔軟に対応できます。</p>
 <p>詳しい利用方法は次の <a class="reference internal" href="usage.html#usage"><em>使い方</em></a> を参照してください。</p>
 </div>
