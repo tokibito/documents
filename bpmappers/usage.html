@@ -188,19 +188,163 @@
 </div>
 <div class="section" id="mapper-after-filter-foo">
 <h3>Mapper.after_filter_FOO<a class="headerlink" href="#mapper-after-filter-foo" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<p>フィールドの値変換の後に実行されます。FOOはフィールド名に置き換えてください。</p>
+<p>フィールドの値変換の後に実行されます。FOOはフィールド名に置き換えてください。
+第一引数に、filter_FOOの結果の値が入ります。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span> <span class="n">Mapper</span><span class="p">,</span> <span class="n">NonKeyField</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyMapper</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">value</span> <span class="o">=</span> <span class="n">NonKeyField</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">filter_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s">&quot;oyoyo&quot;</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">after_filter_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">val</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapper</span> <span class="o">=</span> <span class="n">MyMapper</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mapper</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+<span class="go">{&#39;value&#39;: &#39;Oyoyo&#39;}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="mapper-attach-foo">
 <h3>Mapper.attach_FOO<a class="headerlink" href="#mapper-attach-foo" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>マッピングの結果の辞書に値を追加する前に実行されます。値を追加しない場合や、値の追加位置を変更する場合などに使用できます。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span> <span class="n">Mapper</span><span class="p">,</span> <span class="n">NonKeyField</span><span class="p">,</span> <span class="n">RawField</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">PointMapper</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">x</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">y</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">attach_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parsed</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">parsed</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">attach_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parsed</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">parsed</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;y is </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">y</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapper</span> <span class="o">=</span> <span class="n">PointMapper</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span> <span class="mf">20</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mapper</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+<span class="go">{20: &#39;y is 20&#39;, 10: (10, 100, 1000, 10000)}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="field-callback">
 <h3>Field.callback<a class="headerlink" href="#field-callback" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>フィールドの値変換の前に実行されます。 <tt class="docutils literal"><span class="pre">filter_FOO</span></tt> の後にフィールドクラスで実行されます。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span> <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span><span class="p">,</span> <span class="n">DelegateField</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="gp">... </span>       <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="gp">...</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">PersonInfoMapper</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">info</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">v</span> <span class="p">:</span> <span class="s">&quot;name:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">v</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">PersonInfoMapper2</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">info</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">v</span> <span class="p">:</span> <span class="s">&quot;name:</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">v</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">filter_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">v</span><span class="o">+</span><span class="n">v</span>
+<span class="gp">...</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapper</span> <span class="o">=</span> <span class="n">PersonInfoMapper</span><span class="p">(</span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;bucho&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mapper</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+<span class="go">{&#39;info&#39;: &#39;name:bucho&#39;}</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapper</span> <span class="o">=</span> <span class="n">PersonInfoMapper2</span><span class="p">(</span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;bucho&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mapper</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+<span class="go">{&#39;info&#39;: &#39;name:buchobucho&#39;}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="field-after-callback">
 <h3>Field.after_callback<a class="headerlink" href="#field-after-callback" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>フィールドの値変換の後に実行されます。 <tt class="docutils literal"><span class="pre">after_filter_FOO</span></tt> の前にフィールドクラスで実行されます。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span> <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span><span class="p">,</span> <span class="n">ListDelegateField</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">authors</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">authors</span> <span class="o">=</span> <span class="n">authors</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">AuthorMapper</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">author</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">BookMapper</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">title</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="n">authors</span> <span class="o">=</span> <span class="n">ListDelegateField</span><span class="p">(</span><span class="n">AuthorMapper</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">book</span> <span class="o">=</span> <span class="n">Book</span><span class="p">(</span><span class="s">&quot;be clound&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;bucho&quot;</span><span class="p">),</span> <span class="n">Person</span><span class="p">(</span><span class="s">&quot;shacho&quot;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">BookMapper</span><span class="p">(</span><span class="n">book</span><span class="p">)</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+<span class="go">{&#39;authors&#39;: [{&#39;author&#39;: &#39;bucho&#39;}, {&#39;author&#39;: &#39;shacho&#39;}], &#39;title&#39;: &#39;be clound&#39;}</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">get_vals</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot;</span>
+<span class="gp">... </span><span class="sd">    辞書のリストから、値だけを取り出す関数</span>
+<span class="gp">...</span><span class="sd"></span>
+<span class="gp">... </span><span class="sd">    &gt;&gt;&gt; get_vals([{&quot;pt&quot;:1}, {&quot;pt&quot;:2}])</span>
+<span class="gp">... </span><span class="sd">    [1, 2]</span>
+<span class="gp">... </span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="gp">... </span>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">dic</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">dic</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">... </span>            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">result</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">BookMapperExt</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">title</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="n">authors</span> <span class="o">=</span> <span class="n">ListDelegateField</span><span class="p">(</span><span class="n">AuthorMapper</span><span class="p">,</span> <span class="n">after_callback</span><span class="o">=</span><span class="n">get_vals</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">book</span> <span class="o">=</span> <span class="n">Book</span><span class="p">(</span><span class="s">&quot;be clound&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;bucho&quot;</span><span class="p">),</span> <span class="n">Person</span><span class="p">(</span><span class="s">&quot;shacho&quot;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">BookMapperExt</span><span class="p">(</span><span class="n">book</span><span class="p">)</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+<span class="go">{&#39;authors&#39;: [&#39;bucho&#39;, &#39;shacho&#39;], &#39;title&#39;: &#39;be clound&#39;}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p>filter_FOO, after_filter_FOO, callback, after_callbackは以下の順序で呼ばれます。</p>
+<ol class="arabic simple">
+<li>filter_FOO</li>
+<li>callback</li>
+<li>after_callback</li>
+<li>after_filter_FOO</li>
+</ol>
+<p>実行例
+.. doctest:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bpmappers</span> <span class="kn">import</span> <span class="n">Mapper</span><span class="p">,</span> <span class="n">RawField</span><span class="p">,</span> <span class="n">DelegateField</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="gp">...</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">PersonInfoMapper</span><span class="p">(</span><span class="n">Mapper</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">info</span> <span class="o">=</span> <span class="n">RawField</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">callback</span><span class="o">=</span> <span class="k">lambda</span> <span class="n">v</span> <span class="p">:</span>  <span class="s">&quot;( cb: </span><span class="si">%s</span><span class="s"> )&quot;</span> <span class="o">%</span> <span class="n">v</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">after_callback</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">v</span> <span class="p">:</span>  <span class="s">&quot;[ after_cb: </span><span class="si">%s</span><span class="s"> ]&quot;</span> <span class="o">%</span> <span class="n">v</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">filter_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s">&quot;&lt; filter: </span><span class="si">%s</span><span class="s"> &gt;&quot;</span> <span class="o">%</span> <span class="n">v</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">after_filter_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s">&quot;{ after_filter: </span><span class="si">%s</span><span class="s"> }&quot;</span> <span class="o">%</span> <span class="n">v</span>
+<span class="gp">...</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mapper</span> <span class="o">=</span> <span class="n">PersonInfoMapper</span><span class="p">(</span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;BP&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">mapper</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
+<span class="go">{&#39;info&#39;: &#39;{ after_filter: [ after_cb: ( cb: &lt; filter: BP &gt; ) ] }&#39;}</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
