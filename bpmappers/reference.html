@@ -7,14 +7,14 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>リファレンス &mdash; bpmappers v0.4dev documentation</title>
+    <title>リファレンス &mdash; bpmappers v0.4 documentation</title>
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/print.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.4dev',
+        VERSION:     '0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,12 +25,12 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="bpmappers v0.4dev documentation" href="index.html" />
+    <link rel="top" title="bpmappers v0.4 documentation" href="index.html" />
     <link rel="prev" title="Djangoフレームワークのモデルをマッピングする" href="djangomodel.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="_static/beproud.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>bpmappers v0.4dev documentation</span></a></h1>
+          <span>bpmappers v0.4 documentation</span></a></h1>
         <h2 class="heading"><span>リファレンス</span></h2>
       </div>
       <div class="topnav">
@@ -115,7 +115,25 @@
 </tr>
 </tbody>
 </table>
-<p>as_dictの最後に呼ばれます。順序付き辞書のソート順を変更する場合にオーバーライドします。</p>
+<p>as_dictメソッドの最後に呼ばれます。順序付き辞書のソート順を変更する場合にオーバーライドします。</p>
+<dl class="method">
+<dt id="Mapper.key_name">
+<tt class="descclassname">Mapper.</tt><tt class="descname">key_name</tt><big>(</big><em>name</em>, <em>value</em>, <em>field</em><big>)</big><a class="headerlink" href="#Mapper.key_name" title="この定義へのパーマリンク">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">name:</th><td class="field-body">マッピング先の辞書のキー名</td>
+</tr>
+<tr class="field"><th class="field-name">value:</th><td class="field-body">変換済みの値</td>
+</tr>
+<tr class="field"><th class="field-name">field:</th><td class="field-body">処理中のFieldオブジェクト</td>
+</tr>
+</tbody>
+</table>
+<p>as_dictメソッドから呼ばれます。マッピング先のキー名をマッピングの直前に変換したい場合に使います。</p>
 </div>
 <div class="section" id="class-modelmapper">
 <h2>class ModelMapper<a class="headerlink" href="#class-modelmapper" title="このヘッドラインへのパーマリンク">¶</a></h2>
