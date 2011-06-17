@@ -7,14 +7,14 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>概要 &mdash; bpmappers v0.2 documentation</title>
+    <title>概要 &mdash; bpmappers v0.3 documentation</title>
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/print.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.2',
+        VERSION:     '0.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,13 +25,13 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <script type="text/javascript" src="_static/theme_extras.js"></script>
-    <link rel="top" title="bpmappers v0.2 documentation" href="index.html" />
+    <link rel="top" title="bpmappers v0.3 documentation" href="index.html" />
     <link rel="next" title="インストール" href="install.html" />
     <link rel="prev" title="bpmappers ドキュメント" href="index.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="_static/beproud.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>bpmappers v0.2 documentation</span></a></h1>
+          <span>bpmappers v0.3 documentation</span></a></h1>
         <h2 class="heading"><span>概要</span></h2>
       </div>
       <div class="topnav">
@@ -72,7 +72,7 @@
     <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">response_json</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>  <span class="c"># Djangoのマネージャを使用しています</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># Djangoのマネージャを使用しています</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">_map_team</span><span class="p">(</span><span class="n">team</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -107,11 +107,11 @@
     <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">response_json</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">_map_team</span><span class="p">(</span><span class="n">team</span><span class="p">)))</span>
 
 <span class="k">def</span> <span class="nf">response_json_name</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">_map_team_person_name</span><span class="p">(</span><span class="n">team</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -139,11 +139,11 @@
     <span class="n">persons</span> <span class="o">=</span> <span class="n">ListDelegateField</span><span class="p">(</span><span class="n">PersonMapper</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">manager</span><span class="p">:</span><span class="n">manager</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 
 <span class="k">def</span> <span class="nf">response_json</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">TeamMapper</span><span class="p">(</span><span class="n">team</span><span class="p">)</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()))</span>
 
 <span class="k">def</span> <span class="nf">response_json_name</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mf">1</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">Team</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">TeamPersonNameMapper</span><span class="p">(</span><span class="n">team</span><span class="p">)</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()))</span>
 </pre></div>
 </div>
@@ -168,8 +168,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright 2010, BeProud Inc..
-      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.4 で生成しました。
+        &copy; Copyright 2011, BeProud Inc..
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7 で生成しました。
     </div>
   </body>
 </html>
