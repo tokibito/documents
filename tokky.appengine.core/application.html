@@ -47,8 +47,11 @@
             
   <div class="section" id="id1">
 <h1>アプリケーションを作成する<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>AppEngine用の新規プロジェクトを作成します。</p>
-<p><tt class="docutils literal"><span class="pre">scaffold</span></tt> コマンドを実行します。このドキュメントでは <cite>engineapp</cite> という名前のアプリケーションを作成します。</p>
+<p>AppEngine用のアプリケーションを作成します。</p>
+<div class="section" id="id2">
+<h2>新規にアプリケーションを作成する<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>新規アプリケーションの作成は <tt class="docutils literal"><span class="pre">scaffold</span></tt> コマンドを実行します。
+このドキュメントでは <cite>engineapp</cite> という名前のアプリケーションを作成します。</p>
 <div class="highlight-python"><pre>$ scaffold create tokky.appengine.core
 application_name: engineapp</pre>
 </div>
@@ -57,18 +60,84 @@ application_name: engineapp</pre>
 <div class="highlight-python"><pre>$ cd engineapp
 $ dev_appserver.py .</pre>
 </div>
-<p>起動したアドレスをブラウザで開いてみてください。</p>
-<p>何も設定していない状態では <cite>404 not Found.</cite> と表示されるはずです。</p>
+<p>起動したアドレスをウェブブラウザで開いてみてください。
+何も設定していない状態では <cite>404 not Found.</cite> と表示されるはずです。</p>
+</div>
+<div class="section" id="id3">
+<h2>トップページを有効にする<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>トップページを有効にしてみましょう。</p>
-<p>engineappディレクトリ内の <tt class="docutils literal"><span class="pre">config.py</span></tt> というファイルをエディタで開き、 <tt class="docutils literal"><span class="pre">APPS</span></tt> の次の行のコメント文字を消してください。</p>
+<p>engineapp ディレクトリ内の <tt class="docutils literal"><span class="pre">config.py</span></tt> というファイルをエディタで開き、 <tt class="docutils literal"><span class="pre">APPS</span></tt> の <tt class="docutils literal"><span class="pre">toppage</span></tt> と書かれた行のコメントアウトを消してください。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># installed apps</span>
 <span class="n">APPS</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="s">r&#39;^/$&#39;</span><span class="p">,</span> <span class="s">&#39;apps.toppage.application&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>これでトップページが有効になりました。</p>
-<p>ブラウザでもう一度開いてみると、 <cite>hello world!</cite> と表示されます。</p>
+<p>これでトップページが有効になりました。
+保存して、ウェブブラウザでもう一度開いてみると、 <cite>hello world!</cite> と表示されます。</p>
+<img alt="_images/helloworld.png" src="_images/helloworld.png" />
+</div>
+<div class="section" id="id4">
+<h2>トップページのテンプレートを変更する<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>有効にしたトップページの表示を変更してみましょう。</p>
+<p>このページは <a class="reference external" href="https://docs.djangoproject.com/en/dev/topics/templates/">Django テンプレート</a> ファイルからHTMLを生成しています。
+テンプレートファイルは <tt class="docutils literal"><span class="pre">engineapp/templates/index.html</span></tt> にあります。</p>
+<p>ファイルを次のように編集して保存します。</p>
+<div class="highlight-html+django"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=UTF-8&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>こんにちは世界！<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>こんにちは世界！<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">日本語の内容を含むテンプレートファイルは、文字コードをUTF-8にして保存します。</p>
+</div>
+<p>ウェブブラウザでトップページをリロードすると、表示が変更されたことを確認できます。</p>
+<img alt="_images/helloworld_ja.png" src="_images/helloworld_ja.png" />
+</div>
+<div class="section" id="id5">
+<h2>仕組みを知る<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>テンプレートファイルを使用してページを表示する仕組みについて見てみましょう。</p>
+<p>トップページのアプリケーションハンドラは、 <tt class="docutils literal"><span class="pre">engineapp/apps/toppage.py</span></tt> モジュールにあります。
+ファイルをエディタで開いてみて見ましょう。</p>
+<p>解説のコメントを加えたものを次に示します。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">google.appengine.ext</span> <span class="kn">import</span> <span class="n">webapp</span>
+
+<span class="kn">from</span> <span class="nn">core.generics</span> <span class="kn">import</span> <span class="n">TemplatePageHandler</span>
+
+<span class="kn">import</span> <span class="nn">config</span>
+
+<span class="c"># テンプレートファイルを使ってページを表示するクラスの定義</span>
+<span class="k">class</span> <span class="nc">TopPageHandler</span><span class="p">(</span><span class="n">TemplatePageHandler</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s">&#39;templates/index.html&#39;</span>  <span class="c"># このハンドラで使うテンプレートのパス</span>
+
+<span class="c"># このトップページアプリケーションのエントリーポイント(WSGIアプリケーション)</span>
+<span class="c"># webapp.WSGIApplicationをそのまま使用します</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">webapp</span><span class="o">.</span><span class="n">WSGIApplication</span><span class="p">([</span>
+    <span class="p">(</span><span class="s">r&#39;/&#39;</span><span class="p">,</span> <span class="n">TopPageHandler</span><span class="p">),</span>
+    <span class="p">],</span> <span class="n">debug</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>ここで使用している <tt class="docutils literal"><span class="pre">TemplatePageHandler</span></tt> は、 <tt class="docutils literal"><span class="pre">webapp.RequestHandler</span></tt> を継承したクラスです。
+<tt class="docutils literal"><span class="pre">TemplatePageHandler</span></tt> は <tt class="docutils literal"><span class="pre">template_name</span></tt> で使用するテンプレートファイルのパスを指定します。</p>
+<p>モジュール内で定義された <tt class="docutils literal"><span class="pre">application</span></tt> は <tt class="docutils literal"><span class="pre">webapp.WSGIApplication</span></tt> を使用したWSGIアプリケーションの形になっています。
+最初に書き換えた <tt class="docutils literal"><span class="pre">config.py</span></tt> の <tt class="docutils literal"><span class="pre">APPS</span></tt> 部分をもう一度見てみましょう。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># installed apps</span>
+<span class="n">APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">r&#39;^/$&#39;</span><span class="p">,</span> <span class="s">&#39;apps.toppage.application&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">APPS</span></tt> のリスト内には、正規表現とアプリケーションハンドラ(WSGIアプリケーション)のインポート名をタプルで記述しています。
+tokky.appengine.core では、このリスト内のタプルを順に参照し、URLに最初にマッチしたアプリケーションハンドラをロードして実行します。</p>
+<p>アプリケーションハンドラはURLにマッチしない限り、ロードされません。これは、スピンアップ時のパフォーマンス向上と、メモリ使用量の節約にも貢献しています。</p>
+</div>
 </div>
 
 
@@ -77,6 +146,17 @@ $ dev_appserver.py .</pre>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">アプリケーションを作成する</a><ul>
+<li><a class="reference internal" href="#id2">新規にアプリケーションを作成する</a></li>
+<li><a class="reference internal" href="#id3">トップページを有効にする</a></li>
+<li><a class="reference internal" href="#id4">トップページのテンプレートを変更する</a></li>
+<li><a class="reference internal" href="#id5">仕組みを知る</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>前のトピックへ</h4>
   <p class="topless"><a href="intro.html"
                         title="前の章へ">はじめに</a></p>
