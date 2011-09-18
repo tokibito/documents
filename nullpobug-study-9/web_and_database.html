@@ -1,0 +1,186 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Webとデータベース &mdash; nullpobug勉強会#9 v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="nullpobug勉強会#9 v1.0 documentation" href="index.html" />
+    <link rel="prev" title="HTTPとプロキシの話" href="http_and_proxy.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="http_and_proxy.html" title="HTTPとプロキシの話"
+             accesskey="P">前へ</a> |</li>
+        <li><a href="index.html">nullpobug勉強会#9 v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="web">
+<h1>Webとデータベース<a class="headerlink" href="#web" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="php">
+<h2>PHP<a class="headerlink" href="#php" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Apache/mod_phpで動かすことがほとんど。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s2">&quot;Hello world!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>CUI版のPHPもある。</p>
+<div class="highlight-python"><pre>$ sudo aptitude install php5-cli</pre>
+</div>
+<div class="highlight-python"><pre>$ php hello.php</pre>
+</div>
+<div class="section" id="apachephp">
+<h3>ApacheとPHPの関係とか<a class="headerlink" href="#apachephp" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>ApacheがHTTPサーバの機能を提供し、Apacheモジュールであるmod_phpがphpのスクリプトファイルを実行する。</p>
+</div>
+</div>
+<div class="section" id="url">
+<h2>URLルーティング<a class="headerlink" href="#url" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>CGIなどのサーバ側で実行されるスクリプトは、URLと実行するスクリプトのファイルパスが一対一の密結合になっていた。</p>
+<p>この場合、動的なURLを扱うのが難しく、スクリプトファイルの構造化もやりづらかった。</p>
+<p>こういった場合に、URLルーティングの仕組みを導入して解決することができる。</p>
+<p>基本的には1つのスクリプトファイルがすべてのリクエストを受け取り、そこから処理を他のスクリプトに委譲したりする。</p>
+<p>Apacheであればmod_rewriteを使ってindex.phpを隠蔽するなどがよくあるやり方。</p>
+</div>
+<div class="section" id="wsgi">
+<h2>WSGI<a class="headerlink" href="#wsgi" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>WebサーバとPythonのWebアプリケーションをつなぐ、共通のインターフェース。</p>
+</div>
+<div class="section" id="memcached">
+<h2>memcached<a class="headerlink" href="#memcached" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>物理メモリを使用するシンプルなキャッシュサーバ。</p>
+<p>クライアントライブラリはいっぱいある。</p>
+<div class="highlight-python"><pre>$ sudo aptitude install memcached</pre>
+</div>
+<p>起動はこんな感じ。デフォルトだと11211ポートを使う。</p>
+<div class="highlight-python"><pre>$ memcached -p 11211 -m 32 -l 127.0.0.1</pre>
+</div>
+<p>認証はないので、外部から接続可能なサーバで使う場合は注意する。</p>
+</div>
+<div class="section" id="mysql">
+<h2>MySQL<a class="headerlink" href="#mysql" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>SQLで問い合わせ可能なデータベース。</p>
+<p>認証と権限の設定が可能。</p>
+<p>最新の安定版は5.5。</p>
+<p>古いバージョンは文字コード周りのトラブルや性能差がかなりあるので、可能なら最新版を使うべき。</p>
+</div>
+<div class="section" id="odbc-jdbc">
+<h2>ODBC/JDBC<a class="headerlink" href="#odbc-jdbc" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>データベース接続の共通インターフェース。</p>
+<p>ODBCはWindows標準。</p>
+<p>JDBCはJava用。</p>
+<p>ADO-&gt;OLEDB-&gt;ODBC-&gt;各種データベースという関係。</p>
+<p>ADOは <strong>ActiveX Data Object</strong> の略。OLEDBのデータをオブジェクトとして扱えるようにするインターフェース。</p>
+</div>
+<div class="section" id="vbscript">
+<h2>VBScript<a class="headerlink" href="#vbscript" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>WindowsScriptHostで実行できるスクリプト。CreateObject関数でOLEコンテナ(Excelとか)とかActiveXのオブジェクトを扱えるので、
+VBScriptに機能がなくても外部アプリケーションとの連携でいろいろできる。</p>
+<p>前述のADOをCreateObject関数で作れば、ODBC経由のデータベースサーバを扱うことも可能。</p>
+</div>
+<div class="section" id="iis">
+<h2>IIS<a class="headerlink" href="#iis" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>MicrosoftのHTTPサーバ。ISAPIというインターフェース経由で各種モジュールを組み込むことが可能。</p>
+<p>ISAPI経由でphpを動かすこともできる。</p>
+<p>またWSHのスクリプトを実行して出力を返す <strong>Active Server Pages</strong> も使える。</p>
+<p>Windows ServerやWindowsXP Proなどで使える。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Webとデータベース</a><ul>
+<li><a class="reference internal" href="#php">PHP</a><ul>
+<li><a class="reference internal" href="#apachephp">ApacheとPHPの関係とか</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#url">URLルーティング</a></li>
+<li><a class="reference internal" href="#wsgi">WSGI</a></li>
+<li><a class="reference internal" href="#memcached">memcached</a></li>
+<li><a class="reference internal" href="#mysql">MySQL</a></li>
+<li><a class="reference internal" href="#odbc-jdbc">ODBC/JDBC</a></li>
+<li><a class="reference internal" href="#vbscript">VBScript</a></li>
+<li><a class="reference internal" href="#iis">IIS</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="http_and_proxy.html"
+                        title="前の章へ">HTTPとプロキシの話</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/web_and_database.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>クイック検索</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="http_and_proxy.html" title="HTTPとプロキシの話"
+             >前へ</a> |</li>
+        <li><a href="index.html">nullpobug勉強会#9 v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, tokibito.
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7 で生成しました。
+    </div>
+  </body>
+</html>

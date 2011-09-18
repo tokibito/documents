@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>HTTPとプロキシの話 &mdash; nullpobug勉強会#9 v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="nullpobug勉強会#9 v1.0 documentation" href="index.html" />
+    <link rel="next" title="Webとデータベース" href="web_and_database.html" />
+    <link rel="prev" title="nullpobug 勉強会 #9" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="web_and_database.html" title="Webとデータベース"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="nullpobug 勉強会 #9"
+             accesskey="P">前へ</a> |</li>
+        <li><a href="index.html">nullpobug勉強会#9 v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="http">
+<h1>HTTPとプロキシの話<a class="headerlink" href="#http" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>HTTPのおさらい<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id2">
+<h3>どんなプロトコルか<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>HTTP/1.0とHTTP1.1が主に使われる。</p>
+<p>1.1の場合はコンテンツ受け取り後も通信を切断せずに、続けて他のデータの受け渡しを行える。</p>
+<p><strong>ブラウザからのリクエスト</strong>:</p>
+<div class="highlight-python"><pre>GET / HTTP/1.1
+Host: 127.0.0.1:8000
+Connection: keep-alive
+Cache-Control: max-age=0
+User-Agent: Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.163 Safari/535.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,\*/\*;q=0.8
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: ja,en-US;q=0.8,en;q=0.6
+Accept-Charset: Shift_JIS,utf-8;q=0.7,*;q=0.3</pre>
+</div>
+<p><strong>サーバから返すレスポンス</strong>:</p>
+<div class="highlight-python"><pre>HTTP/1.0 200 OK
+Content-Type: text/plain
+Content-Length: 12
+
+Hello world!</pre>
+</div>
+<p><strong>サーバ例</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="n">content</span> <span class="o">=</span> <span class="s">&#39;HTTP/1.0 200 OK</span><span class="se">\r\n</span><span class="s">Content-Type: text/plain</span><span class="se">\r\n</span><span class="s">Content-Length: 12</span><span class="se">\r\n\r\n</span><span class="s">Hello world!&#39;</span>
+
+<span class="n">ADDR</span> <span class="o">=</span> <span class="s">&#39;127.0.0.1&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">8000</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+
+    <span class="k">print</span> <span class="s">&#39;Starting HTTP server port=</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">PORT</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">ADDR</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">conn</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+            <span class="k">print</span> <span class="s">&#39;---connected---&#39;</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+                <span class="k">print</span> <span class="n">data</span>
+                <span class="k">print</span> <span class="s">&#39;-------------------------&#39;</span>
+                <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>ステートレス<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>プロトコル自体の仕様では、サーバ側で状態を持たないもの。</p>
+<p>ステートフルなプロトコルは例えばFTPやSMTP。</p>
+</div>
+<div class="section" id="id4">
+<h3>ステートフルどうすんの<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>でもログインの実装とかは状態保持が必要。そういう場合にはHTTP Cookieを利用できる。</p>
+<p>サーバ側からCookieを設定したい場合には、Set-Cookieヘッダを返す。</p>
+<p>Cookieはクライアント側で変更可能なため、信頼できない値となる。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>プロキシサーバ<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>通信を中継するサーバ。</p>
+<div class="section" id="id6">
+<h3>リバースプロキシ<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>WAN側から受けたリクエストを別のサーバに渡して結果を受け取り、返す。</p>
+<p>外部からのリクエストに対する負荷分散などで使う。</p>
+<p>ngixnやApacheのmod_proxyなどでできる。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>HTTPとプロキシ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>HTTPでの接続先はリクエストヘッダ中のHostヘッダで決まる。</p>
+<p>そのため、リクエスト内容を解析しなければ、接続先がわからない。</p>
+<p>プロキシサーバのソフトウェアとしては、Apacheでmod_proxyモジュールとmod_proxy_httpモジュールの組み合わせなどがある。</p>
+</div>
+<div class="section" id="ssh">
+<h2>sshとプロキシ<a class="headerlink" href="#ssh" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id8">
+<h3>ポートフォワード<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="highlight-python"><pre>$ ssh -L 5000:127.0.0.1:8000 foo@example.com</pre>
+</div>
+</div>
+<div class="section" id="socks">
+<h3>SOCKS<a class="headerlink" href="#socks" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>パケット転送先も指定可能なプロトコル。VPNに少し似ている(片方向のみ)。</p>
+<p>SOCKSサーバにSOCKSクライアントで接続して利用できる。ブラウザのプロキシサーバ設定にもある。</p>
+<div class="highlight-python"><pre>$ ssh -D 6000 foo@example.com</pre>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>実装<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>サーバ用のソケットをlistenして待つ。クライアント側から接続があれば、転送先に向けてクライアント用のソケットでconnectする。</p>
+</div>
+<div class="section" id="id10">
+<h2>改ざんについて<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>プロキシサーバで、通信データを転送する際に、中身を変更することができる。</p>
+<p>これを利用してリクエストやレスポンスの改ざんを行なう。</p>
+<p>クライアント端末の接続先をプロキシサーバに向けさせても、ユーザはなかなか気付きにくい。</p>
+<p>認証情報の入力を求める表示をレスポンスに含ませ、データを抜き取ることも可能となる。</p>
+<p>SSLを使うと、通信内容が暗号化されて中継サーバでは解析が難しいため、こういった改ざんも難しくなる。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">HTTPとプロキシの話</a><ul>
+<li><a class="reference internal" href="#id1">HTTPのおさらい</a><ul>
+<li><a class="reference internal" href="#id2">どんなプロトコルか</a></li>
+<li><a class="reference internal" href="#id3">ステートレス</a></li>
+<li><a class="reference internal" href="#id4">ステートフルどうすんの</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">プロキシサーバ</a><ul>
+<li><a class="reference internal" href="#id6">リバースプロキシ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">HTTPとプロキシ</a></li>
+<li><a class="reference internal" href="#ssh">sshとプロキシ</a><ul>
+<li><a class="reference internal" href="#id8">ポートフォワード</a></li>
+<li><a class="reference internal" href="#socks">SOCKS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">実装</a></li>
+<li><a class="reference internal" href="#id10">改ざんについて</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="index.html"
+                        title="前の章へ">nullpobug 勉強会 #9</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="web_and_database.html"
+                        title="次の章へ">Webとデータベース</a></p>
+  <h3>このページ</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/http_and_proxy.txt"
+           rel="nofollow">ソースコードを表示</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>クイック検索</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="web_and_database.html" title="Webとデータベース"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="nullpobug 勉強会 #9"
+             >前へ</a> |</li>
+        <li><a href="index.html">nullpobug勉強会#9 v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, tokibito.
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7 で生成しました。
+    </div>
+  </body>
+</html>
