@@ -66,8 +66,8 @@ sqlite3モジュールを使ってデータベース作成
 参考ページ
 ~~~~~~~~~~
 
-* http://www.python.jp/doc/release/lib/module-sqlite3.html
-* http://www.python.jp/doc/release/lib/module-sys.html#l2h-5117
+* http://www.python.jp/doc/release/library/sqlite3.html
+* http://www.python.jp/doc/release/library/sys.html
 
 feedparserモジュールでTwitter検索結果のAtomフィードを取得してみる
 -----------------------------------------------------------------
