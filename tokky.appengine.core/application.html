@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>アプリケーションを作成する &mdash; tokky.appengine.core v0.1dev documentation</title>
+    <title>プロジェクトを作成する &mdash; tokky.appengine.core 0.1dev documentation</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -23,7 +26,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
-    <link rel="top" title="tokky.appengine.core v0.1dev documentation" href="index.html" />
+    <link rel="top" title="tokky.appengine.core 0.1dev documentation" href="index.html" />
+    <link rel="next" title="変更履歴" href="changes.html" />
     <link rel="prev" title="はじめに" href="intro.html" /> 
   </head>
   <body>
@@ -34,9 +38,12 @@
           <a href="genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
+          <a href="changes.html" title="変更履歴"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
           <a href="intro.html" title="はじめに"
              accesskey="P">前へ</a> |</li>
-        <li><a href="index.html">tokky.appengine.core v0.1dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">tokky.appengine.core 0.1dev documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -46,97 +53,73 @@
           <div class="body">
             
   <div class="section" id="id1">
-<h1>アプリケーションを作成する<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>AppEngine用のアプリケーションを作成します。</p>
+<h1>プロジェクトを作成する<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>GAE用のプロジェクトを作成します。</p>
 <div class="section" id="id2">
-<h2>新規にアプリケーションを作成する<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>新規アプリケーションの作成は <tt class="docutils literal"><span class="pre">scaffold</span></tt> コマンドを実行します。
-このドキュメントでは <cite>engineapp</cite> という名前のアプリケーションを作成します。</p>
-<div class="highlight-python"><pre>$ scaffold create tokky.appengine.core
-application_name: engineapp</pre>
-</div>
-<p>これで雛型からアプリケーションディレクトリが作成されました。</p>
-<p>AppEngineの開発サーバを起動して、確認してみます。</p>
+<h2>新規にプロジェクトを作成する<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>新規プロジェクトの作成はnew_project_templateディレクトリをコピーして使用します。
+ここでは <cite>engineapp</cite> という名前のプロジェクトを作成するので、コピーしたディレクトリの名前を変更します。</p>
+<img alt="_images/rename_project_template.png" src="_images/rename_project_template.png" />
+<p>GAEの開発サーバを起動して、確認してみます。</p>
 <div class="highlight-python"><pre>$ cd engineapp
 $ dev_appserver.py .</pre>
 </div>
 <p>起動したアドレスをウェブブラウザで開いてみてください。
-何も設定していない状態では <cite>404 not Found.</cite> と表示されるはずです。</p>
-</div>
-<div class="section" id="id3">
-<h2>トップページを有効にする<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>トップページを有効にしてみましょう。</p>
-<p>engineapp ディレクトリ内の <tt class="docutils literal"><span class="pre">config.py</span></tt> というファイルをエディタで開き、 <tt class="docutils literal"><span class="pre">APPS</span></tt> の <tt class="docutils literal"><span class="pre">toppage</span></tt> と書かれた行のコメントアウトを消してください。</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># installed apps</span>
-<span class="n">APPS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s">r&#39;^/$&#39;</span><span class="p">,</span> <span class="s">&#39;apps.toppage.application&#39;</span><span class="p">),</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-<p>これでトップページが有効になりました。
-保存して、ウェブブラウザでもう一度開いてみると、 <cite>hello world!</cite> と表示されます。</p>
-<img alt="_images/helloworld.png" src="_images/helloworld.png" />
-</div>
-<div class="section" id="id4">
-<h2>トップページのテンプレートを変更する<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>有効にしたトップページの表示を変更してみましょう。</p>
-<p>このページは <a class="reference external" href="https://docs.djangoproject.com/en/dev/topics/templates/">Django テンプレート</a> ファイルからHTMLを生成しています。
-テンプレートファイルは <tt class="docutils literal"><span class="pre">engineapp/templates/index.html</span></tt> にあります。</p>
-<p>ファイルを次のように編集して保存します。</p>
-<div class="highlight-html+django"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=UTF-8&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;title&gt;</span>こんにちは世界！<span class="nt">&lt;/title&gt;</span>
-  <span class="nt">&lt;/head&gt;</span>
-  <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;h1&gt;</span>こんにちは世界！<span class="nt">&lt;/h1&gt;</span>
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</pre></div>
-</div>
+何も設定していない状態では <cite>404 Not Found</cite> と表示されるはずです。</p>
 <div class="admonition note">
 <p class="first admonition-title">ノート</p>
-<p class="last">日本語の内容を含むテンプレートファイルは、文字コードをUTF-8にして保存します。</p>
+<p class="last">プロジェクトディレクトリのパスに日本語(マルチバイト文字)が含まれていると、テンプレートファイルの読み込み等でエラーになる可能性があります。</p>
 </div>
-<p>ウェブブラウザでトップページをリロードすると、表示が変更されたことを確認できます。</p>
-<img alt="_images/helloworld_ja.png" src="_images/helloworld_ja.png" />
 </div>
-<div class="section" id="id5">
-<h2>仕組みを知る<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>テンプレートファイルを使用してページを表示する仕組みについて見てみましょう。</p>
-<p>トップページのアプリケーションハンドラは、 <tt class="docutils literal"><span class="pre">engineapp/apps/toppage.py</span></tt> モジュールにあります。
-ファイルをエディタで開いてみて見ましょう。</p>
-<p>解説のコメントを加えたものを次に示します。</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">google.appengine.ext</span> <span class="kn">import</span> <span class="n">webapp</span>
-
+<div class="section" id="id3">
+<h2>テンプレート使ってページを表示する<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><a class="reference external" href="https://docs.djangoproject.com/en/dev/topics/templates/">Django テンプレート</a> を使ってページを表示してみましょう。</p>
+<p>engineapp/apps ディレクトリ内に <tt class="docutils literal"><span class="pre">toppage.py</span></tt> というファイルを以下の内容で作成します。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">core</span> <span class="kn">import</span> <span class="n">wsgi</span> <span class="k">as</span> <span class="n">core_wsgi</span>
 <span class="kn">from</span> <span class="nn">core.generics</span> <span class="kn">import</span> <span class="n">TemplatePageHandler</span>
 
 <span class="kn">import</span> <span class="nn">config</span>
 
+
 <span class="c"># テンプレートファイルを使ってページを表示するクラスの定義</span>
 <span class="k">class</span> <span class="nc">TopPageHandler</span><span class="p">(</span><span class="n">TemplatePageHandler</span><span class="p">):</span>
-    <span class="n">template_name</span> <span class="o">=</span> <span class="s">&#39;templates/index.html&#39;</span>  <span class="c"># このハンドラで使うテンプレートのパス</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s">&#39;static/index.html&#39;</span>
 
-<span class="c"># このトップページアプリケーションのエントリーポイント(WSGIアプリケーション)</span>
-<span class="c"># webapp.WSGIApplicationをそのまま使用します</span>
-<span class="n">application</span> <span class="o">=</span> <span class="n">webapp</span><span class="o">.</span><span class="n">WSGIApplication</span><span class="p">([</span>
-    <span class="p">(</span><span class="s">r&#39;/&#39;</span><span class="p">,</span> <span class="n">TopPageHandler</span><span class="p">),</span>
+
+<span class="c"># このトップページアプリケーションのエントリーポイント(WSGIアプリケーションを返す関数)</span>
+<span class="k">def</span> <span class="nf">application_factory</span><span class="p">():</span>
+    <span class="c"># core_wsgi.WSGIApplicationでアプリケーションを作成して返します</span>
+    <span class="n">application</span> <span class="o">=</span> <span class="n">core_wsgi</span><span class="o">.</span><span class="n">WSGIApplication</span><span class="p">([</span>
+        <span class="p">(</span><span class="s">r&#39;/&#39;</span><span class="p">,</span> <span class="n">TopPageHandler</span><span class="p">),</span>
     <span class="p">],</span> <span class="n">debug</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">application</span>
 </pre></div>
 </div>
-<p>ここで使用している <tt class="docutils literal"><span class="pre">TemplatePageHandler</span></tt> は、 <tt class="docutils literal"><span class="pre">webapp.RequestHandler</span></tt> を継承したクラスです。
-<tt class="docutils literal"><span class="pre">TemplatePageHandler</span></tt> は <tt class="docutils literal"><span class="pre">template_name</span></tt> で使用するテンプレートファイルのパスを指定します。</p>
-<p>モジュール内で定義された <tt class="docutils literal"><span class="pre">application</span></tt> は <tt class="docutils literal"><span class="pre">webapp.WSGIApplication</span></tt> を使用したWSGIアプリケーションの形になっています。
-最初に書き換えた <tt class="docutils literal"><span class="pre">config.py</span></tt> の <tt class="docutils literal"><span class="pre">APPS</span></tt> 部分をもう一度見てみましょう。</p>
+<p>ソースコード中で指定した <tt class="docutils literal"><span class="pre">static/index.html</span></tt> テンプレートファイルを作成します。</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;title&gt;</span>hello world!<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>hello world!<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>engineapp ディレクトリ内の <tt class="docutils literal"><span class="pre">config.py</span></tt> というファイルをエディタで開き、 <tt class="docutils literal"><span class="pre">APPS</span></tt> にマッチするURLとアプリケーションを返す関数名をタプルで追記します。</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># installed apps</span>
 <span class="n">APPS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s">r&#39;^/$&#39;</span><span class="p">,</span> <span class="s">&#39;apps.toppage.application&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">r&#39;^/_ah/warmup$&#39;</span><span class="p">,</span> <span class="s">&#39;apps.warmup.handlers.application_factory&#39;</span><span class="p">),</span>  <span class="c"># ウォームアップ用アプリケーション</span>
+    <span class="p">(</span><span class="s">r&#39;^/$&#39;</span><span class="p">,</span> <span class="s">&#39;apps.toppage.application_factory&#39;</span><span class="p">),</span>  <span class="c"># 追記</span>
 <span class="p">]</span>
 </pre></div>
 </div>
 <p><tt class="docutils literal"><span class="pre">APPS</span></tt> のリスト内には、正規表現とアプリケーションハンドラ(WSGIアプリケーション)のインポート名をタプルで記述しています。
-tokky.appengine.core では、このリスト内のタプルを順に参照し、URLに最初にマッチしたアプリケーションハンドラをロードして実行します。</p>
-<p>アプリケーションハンドラはURLにマッチしない限り、ロードされません。これは、スピンアップ時のパフォーマンス向上と、メモリ使用量の節約にも貢献しています。</p>
+tokky.appengine.core では、このリスト内のタプルを順に参照し、URLに最初にマッチしたアプリケーションハンドラをロードして実行します。
+アプリケーションハンドラはURLにマッチしない限り、ロードされません。これは、スピンアップ時のパフォーマンス向上と、メモリ使用量の節約にも貢献しています。</p>
+<p>これでトップページが有効になりました。
+保存して、ウェブブラウザでもう一度開いてみると、 <cite>hello world!</cite> と表示されます。</p>
+<img alt="_images/helloworld.png" src="_images/helloworld.png" />
 </div>
 </div>
 
@@ -148,11 +131,9 @@ tokky.appengine.core では、このリスト内のタプルを順に参照し�
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">目次</a></h3>
   <ul>
-<li><a class="reference internal" href="#">アプリケーションを作成する</a><ul>
-<li><a class="reference internal" href="#id2">新規にアプリケーションを作成する</a></li>
-<li><a class="reference internal" href="#id3">トップページを有効にする</a></li>
-<li><a class="reference internal" href="#id4">トップページのテンプレートを変更する</a></li>
-<li><a class="reference internal" href="#id5">仕組みを知る</a></li>
+<li><a class="reference internal" href="#">プロジェクトを作成する</a><ul>
+<li><a class="reference internal" href="#id2">新規にプロジェクトを作成する</a></li>
+<li><a class="reference internal" href="#id3">テンプレート使ってページを表示する</a></li>
 </ul>
 </li>
 </ul>
@@ -160,6 +141,9 @@ tokky.appengine.core では、このリスト内のタプルを順に参照し�
   <h4>前のトピックへ</h4>
   <p class="topless"><a href="intro.html"
                         title="前の章へ">はじめに</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="changes.html"
+                        title="次の章へ">変更履歴</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/application.txt"
@@ -168,7 +152,7 @@ tokky.appengine.core では、このリスト内のタプルを順に参照し�
 <div id="searchbox" style="display: none">
   <h3>クイック検索</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="検索" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -189,14 +173,17 @@ tokky.appengine.core では、このリスト内のタプルを順に参照し�
           <a href="genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
+          <a href="changes.html" title="変更履歴"
+             >次へ</a> |</li>
+        <li class="right" >
           <a href="intro.html" title="はじめに"
              >前へ</a> |</li>
-        <li><a href="index.html">tokky.appengine.core v0.1dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">tokky.appengine.core 0.1dev documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2011, Shinya Okano.
-      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7 で生成しました。
+        &copy; Copyright 2012, Shinya Okano.
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3 で生成しました。
     </div>
   </body>
 </html>
