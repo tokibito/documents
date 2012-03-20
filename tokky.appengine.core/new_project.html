@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>プロジェクトを作成する &mdash; tokky.appengine.core 0.1dev documentation</title>
+    <title>プロジェクトの作成 &mdash; tokky.appengine.core 0.1dev documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="top" title="tokky.appengine.core 0.1dev documentation" href="index.html" />
-    <link rel="next" title="変更履歴" href="changes.html" />
+    <link rel="next" title="ユニットテストの作成と実行" href="unittest.html" />
     <link rel="prev" title="はじめに" href="intro.html" /> 
   </head>
   <body>
@@ -38,7 +38,7 @@
           <a href="genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="changes.html" title="変更履歴"
+          <a href="unittest.html" title="ユニットテストの作成と実行"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
           <a href="intro.html" title="はじめに"
@@ -53,7 +53,7 @@
           <div class="body">
             
   <div class="section" id="id1">
-<h1>プロジェクトを作成する<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>プロジェクトの作成<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>GAE用のプロジェクトを作成します。</p>
 <div class="section" id="id2">
 <h2>新規にプロジェクトを作成する<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -61,8 +61,9 @@
 ここでは <cite>engineapp</cite> という名前のプロジェクトを作成するので、コピーしたディレクトリの名前を変更します。</p>
 <img alt="_images/rename_project_template.png" src="_images/rename_project_template.png" />
 <p>GAEの開発サーバを起動して、確認してみます。</p>
-<div class="highlight-python"><pre>$ cd engineapp
-$ dev_appserver.py .</pre>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>engineapp
+<span class="nv">$ </span>dev_appserver.py .
+</pre></div>
 </div>
 <p>起動したアドレスをウェブブラウザで開いてみてください。
 何も設定していない状態では <cite>404 Not Found</cite> と表示されるはずです。</p>
@@ -114,9 +115,8 @@ $ dev_appserver.py .</pre>
 <span class="p">]</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">APPS</span></tt> のリスト内には、正規表現とアプリケーションハンドラ(WSGIアプリケーション)のインポート名をタプルで記述しています。
-tokky.appengine.core では、このリスト内のタプルを順に参照し、URLに最初にマッチしたアプリケーションハンドラをロードして実行します。
-アプリケーションハンドラはURLにマッチしない限り、ロードされません。これは、スピンアップ時のパフォーマンス向上と、メモリ使用量の節約にも貢献しています。</p>
+<p>tokky.appengine.core では、 <tt class="docutils literal"><span class="pre">APPS</span></tt> リスト内のタプルを順に参照し、URLに最初にマッチしたアプリケーションファクトリーをロードして実行します。アプリケーションファクトリーはWSGIアプリケーションを返します。
+アプリケーションファクトリーはURLにマッチしない限り、ロードされません。これは、スピンアップ時のパフォーマンス向上と、メモリ使用量の節約にも貢献しています。</p>
 <p>これでトップページが有効になりました。
 保存して、ウェブブラウザでもう一度開いてみると、 <cite>hello world!</cite> と表示されます。</p>
 <img alt="_images/helloworld.png" src="_images/helloworld.png" />
@@ -131,7 +131,7 @@ tokky.appengine.core では、このリスト内のタプルを順に参照し�
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">目次</a></h3>
   <ul>
-<li><a class="reference internal" href="#">プロジェクトを作成する</a><ul>
+<li><a class="reference internal" href="#">プロジェクトの作成</a><ul>
 <li><a class="reference internal" href="#id2">新規にプロジェクトを作成する</a></li>
 <li><a class="reference internal" href="#id3">テンプレート使ってページを表示する</a></li>
 </ul>
@@ -142,11 +142,11 @@ tokky.appengine.core では、このリスト内のタプルを順に参照し�
   <p class="topless"><a href="intro.html"
                         title="前の章へ">はじめに</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="changes.html"
-                        title="次の章へ">変更履歴</a></p>
+  <p class="topless"><a href="unittest.html"
+                        title="次の章へ">ユニットテストの作成と実行</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/application.txt"
+    <li><a href="_sources/new_project.txt"
            rel="nofollow">ソースコードを表示</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -173,7 +173,7 @@ tokky.appengine.core では、このリスト内のタプルを順に参照し�
           <a href="genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="changes.html" title="変更履歴"
+          <a href="unittest.html" title="ユニットテストの作成と実行"
              >次へ</a> |</li>
         <li class="right" >
           <a href="intro.html" title="はじめに"

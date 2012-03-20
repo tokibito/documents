@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>はじめに &mdash; tokky.appengine.core 0.1dev documentation</title>
+    <title>開発用対話シェルの実行 &mdash; tokky.appengine.core 0.1dev documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="top" title="tokky.appengine.core 0.1dev documentation" href="index.html" />
-    <link rel="next" title="プロジェクトの作成" href="new_project.html" />
-    <link rel="prev" title="tokky.appengine.core ドキュメント" href="index.html" /> 
+    <link rel="next" title="変更履歴" href="changes.html" />
+    <link rel="prev" title="ユニットテストの作成と実行" href="unittest.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,10 +38,10 @@
           <a href="genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="new_project.html" title="プロジェクトの作成"
+          <a href="changes.html" title="変更履歴"
              accesskey="N">次へ</a> |</li>
         <li class="right" >
-          <a href="index.html" title="tokky.appengine.core ドキュメント"
+          <a href="unittest.html" title="ユニットテストの作成と実行"
              accesskey="P">前へ</a> |</li>
         <li><a href="index.html">tokky.appengine.core 0.1dev documentation</a> &raquo;</li> 
       </ul>
@@ -53,28 +53,14 @@
           <div class="body">
             
   <div class="section" id="id1">
-<h1>はじめに<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<div class="section" id="id2">
-<h2>これは何？<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>tokky.appengine.core は <a class="reference external" href="http://code.google.com/appengine/">GoogleAppEngine</a> (以降GAE)用のアプリケーションフレームワークです。</p>
-<p>GAEのPython版のSDKに含まれている <a class="reference external" href="http://code.google.com/appengine/docs/python/tools/webapp/">webapp フレームワーク</a> をベースとして、少しだけ便利にする機能を提供します。
-大きめのアプリケーションを作る場合などに少しだけ楽かもしれません。</p>
-<p>次に示す機能を提供します:</p>
-<ul class="simple">
-<li>機能単位のURLルーティング</li>
-<li>設定によるアプリケーションの自動ロード</li>
-<li>ユニットテストの実行</li>
-<li>Python2.7ランタイム用の設定</li>
-</ul>
+<h1>開発用対話シェルの実行<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>ローカル環境で対話シェルを使用するためには、 <tt class="docutils literal"><span class="pre">shell.py</span></tt> スクリプトを実行します。IPythonにも対応しています。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python shell.py
+</pre></div>
 </div>
-<div class="section" id="id3">
-<h2>ソースコード<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>オリジナルのソースコードは bitbucket.org 上のリポジトリで管理されています。</p>
-<p><a class="reference external" href="https://bitbucket.org/tokibito/tokky.appengine.core/">https://bitbucket.org/tokibito/tokky.appengine.core/</a></p>
-</div>
-<div class="section" id="id4">
-<h2>ライセンス<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>tokky.appengine.core のソースコードのライセンスは、 New BSD License とします。</p>
+<div class="admonition note">
+<p class="first admonition-title">ノート</p>
+<p class="last">shell.pyスクリプトは、dev_appserverと同じデータベースファイルを使用するため、dev_appserverを起動した状態では対話シェル上でのデータの変更はdev_appserver側に反映されません。</p>
 </div>
 </div>
 
@@ -84,25 +70,15 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">目次</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">はじめに</a><ul>
-<li><a class="reference internal" href="#id2">これは何？</a></li>
-<li><a class="reference internal" href="#id3">ソースコード</a></li>
-<li><a class="reference internal" href="#id4">ライセンス</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="index.html"
-                        title="前の章へ">tokky.appengine.core ドキュメント</a></p>
+  <p class="topless"><a href="unittest.html"
+                        title="前の章へ">ユニットテストの作成と実行</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="new_project.html"
-                        title="次の章へ">プロジェクトの作成</a></p>
+  <p class="topless"><a href="changes.html"
+                        title="次の章へ">変更履歴</a></p>
   <h3>このページ</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/intro.txt"
+    <li><a href="_sources/shell.txt"
            rel="nofollow">ソースコードを表示</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -129,10 +105,10 @@
           <a href="genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="new_project.html" title="プロジェクトの作成"
+          <a href="changes.html" title="変更履歴"
              >次へ</a> |</li>
         <li class="right" >
-          <a href="index.html" title="tokky.appengine.core ドキュメント"
+          <a href="unittest.html" title="ユニットテストの作成と実行"
              >前へ</a> |</li>
         <li><a href="index.html">tokky.appengine.core 0.1dev documentation</a> &raquo;</li> 
       </ul>
