@@ -1,0 +1,223 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>課題 &mdash; Python Developers Festa 2012.07  documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
+    <link rel="top" title="Python Developers Festa 2012.07  documentation" href="index.html" />
+    <link rel="prev" title="Appendix: Pythonのコーディングスタイル" href="appendix2.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>Python Developers Festa 2012.07  documentation</span></a></h1>
+        <h2 class="heading"><span>課題</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="appendix2.html">Appendix: Pythonのコーディングスタイル</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">コンテンツ</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="id1">
+<h1>課題<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>課題は順番にこなす必要はありません。面白そうだと思った課題にチャレンジしてみてください。</p>
+<p>もちろんこれ以外に自分で課題を持っているならば、それをやってみるのも良いでしょう。</p>
+<div class="section" id="socket">
+<h2>socketモジュールを使ってネットワーク通信<a class="headerlink" href="#socket" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">socketモジュールを使って足し算を行うサーバを作成してください</p>
+<p>telnetコマンドで次のように <tt class="docutils literal"><span class="pre">整数+整数</span></tt> のように送信すると足し算の結果を返すサーバを作成してください。</p>
+<div class="highlight-python"><pre>$ telnet localhost 5000
+Trying 127.0.0.1...
+Connected to debian02.
+Escape character is '^]'.
+10+20
+30
+123+456
+579</pre>
+</div>
+</li>
+</ol>
+<div class="admonition hint">
+<p class="first admonition-title">ヒント</p>
+<ol class="arabic simple">
+<li>socketモジュールのドキュメントの例を参考に、サーバ側で受け取ったテキストを改行位置で分割します(&#8220;10+20&#8221;というデータになります)</li>
+<li>分割したテキストの一つ目の要素を <tt class="docutils literal"><span class="pre">+</span></tt> でさらに分割します(&#8220;10&#8221;と&#8221;20&#8221;のデータになります)</li>
+<li>分割したテキストを数値に変換し、足しあわせて、結果を送信します</li>
+</ol>
+<p class="last"><a class="reference external" href="http://www.python.jp/doc/release/library/socket.html">http://www.python.jp/doc/release/library/socket.html</a></p>
+</div>
+<ol class="arabic" start="2">
+<li><p class="first">socketモジュールを使って、1.で作成したサーバにデータを送信して、結果を取得して画面に表示するプログラムを作成してください</p>
+<p>引数を渡して実行すると結果を返してくれるようにしてみてください</p>
+<div class="highlight-python"><pre>$ python add.py 10+20
+30</pre>
+</div>
+</li>
+</ol>
+<div class="admonition hint">
+<p class="first admonition-title">ヒント</p>
+<p>sysモジュールのargvでコマンドライン引数を取得することができます。</p>
+<p class="last"><a class="reference external" href="http://www.python.jp/doc/release/library/sys.html">http://www.python.jp/doc/release/library/sys.html</a></p>
+</div>
+</div>
+<div class="section" id="sqlite3">
+<h2>sqlite3モジュールを使ってデータベース作成<a class="headerlink" href="#sqlite3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">sqlite3モジュールを使って、引数で与えられた品名と金額をデータベースに保存するプログラムを作成してください</p>
+<div class="highlight-python"><pre>$ python inputdb.py みかん 50
+$ python inputdb.py りんご 100
+$ python inputdb.py バナナ 200</pre>
+</div>
+</li>
+</ol>
+<div class="admonition hint">
+<p class="first admonition-title">ヒント</p>
+<p>sysモジュールのargvでコマンドライン引数を取得することができます。</p>
+<p><a class="reference external" href="http://www.python.jp/doc/release/library/sys.html">http://www.python.jp/doc/release/library/sys.html</a></p>
+<p>sqlite3モジュールでsqlite3のデータベースを操作することができます。</p>
+<p><a class="reference external" href="http://www.python.jp/doc/release/library/sqlite3.html">http://www.python.jp/doc/release/library/sqlite3.html</a></p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">テーブルを作成するSQL:</th><td class="field-body"><tt class="docutils literal"><span class="pre">CREATE</span> <span class="pre">TABLE</span> <span class="pre">items</span> <span class="pre">(id</span> <span class="pre">INTEGER</span> <span class="pre">PRIMARY</span> <span class="pre">KEY</span> <span class="pre">AUTOINCREMENT,</span> <span class="pre">name</span> <span class="pre">TEXT,</span> <span class="pre">cost</span> <span class="pre">INTEGER);</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">データを挿入するSQL:</th><td class="field-body"><tt class="docutils literal"><span class="pre">INSERT</span> <span class="pre">INTO</span> <span class="pre">items(name,</span> <span class="pre">cost)</span> <span class="pre">VALUES(&quot;みかん&quot;,</span> <span class="pre">50);</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol class="arabic" start="2">
+<li><p class="first">1で作成したデータベースの内容を一覧表示するプログラムを作成してください</p>
+<div class="highlight-python"><pre>$ python listdb.py
+みかん 50円
+りんご 100円
+バナナ 200円</pre>
+</div>
+</li>
+</ol>
+<div class="admonition hint">
+<p class="first admonition-title">ヒント</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">データを取得するSQL:</th><td class="field-body"><tt class="docutils literal"><span class="pre">SELECT</span> <span class="pre">name,</span> <span class="pre">cost</span> <span class="pre">FROM</span> <span class="pre">items;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol class="arabic" start="3">
+<li><p class="first">引数から入力された金額以上の品物名とその品物の金額を表示してください</p>
+<div class="highlight-python"><pre>$ python filter.py 100
+100円以上の品物は、
+りんご 100円
+バナナ 200円</pre>
+</div>
+</li>
+</ol>
+<div class="admonition hint">
+<p class="first admonition-title">ヒント</p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">データを取得するSQL:</th><td class="field-body"><tt class="docutils literal"><span class="pre">SELECT</span> <span class="pre">name,</span> <span class="pre">cost</span> <span class="pre">FROM</span> <span class="pre">items</span> <span class="pre">WHERE</span> <span class="pre">cost</span> <span class="pre">&gt;=</span> <span class="pre">100;</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="csvcsv">
+<h2>csvモジュールを使ってCSVファイルの読み込みとデータ集計<a class="headerlink" href="#csvcsv" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>次に示すCSVファイルは、果物屋の品物の売上レポートのデータです。</p>
+<p><strong>items.csv</strong>:</p>
+<div class="highlight-python"><pre>2012/06/01,りんご,2,100
+2012/06/01,みかん,10,40
+2012/06/02,りんご,3,100
+2012/06/02,バナナ,3,200
+2012/06/03,りんご,4,120
+2012/06/03,みかん,5,50
+2012/06/04,みかん,5,60
+2012/06/04,バナナ,4,150
+2012/06/05,りんご,1,100
+2012/06/05,みかん,10,50</pre>
+</div>
+<p>1列目は日付、2列目は品物名、3列目は販売した個数、4列目はその日の品物の1個あたりの価格です。ファイルの文字コードはShiftJIS(CP932)です。</p>
+<ol class="arabic">
+<li><p class="first">csvモジュールを使ってCSVファイルを読み込み、各品物ごとに合計の数を計算し、画面に表示するプログラムを作成してください</p>
+<div class="highlight-python"><pre>$ python item_report.py
+りんご 10個
+みかん 30個
+バナナ 7個</pre>
+</div>
+</li>
+</ol>
+<div class="admonition hint">
+<p class="first admonition-title">ヒント</p>
+<p>csvモジュール</p>
+<p class="last"><a class="reference external" href="http://www.python.jp/doc/release/library/csv.html">http://www.python.jp/doc/release/library/csv.html</a></p>
+</div>
+<ol class="arabic" start="2">
+<li><p class="first">csvモジュールを使ってCSVファイルを読み込み、日付ごとの売上金額を計算し、画面に表示するプログラムを作成してください</p>
+<div class="highlight-python"><pre>$ python report.py
+2012/06/01 600円
+2012/06/02 900円
+2012/06/03 730円
+2012/06/04 900円
+2012/06/05 600円</pre>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="appendix2.html">Appendix: Pythonのコーディングスタイル</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">コンテンツ</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Shinya Okano.
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3 で生成しました。
+    </div>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Appendix: パッケージ管理ツール &mdash; Python Developers Festa 2012.07  documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
+    <link rel="top" title="Python Developers Festa 2012.07  documentation" href="index.html" />
+    <link rel="next" title="Appendix: Pythonのコーディングスタイル" href="appendix2.html" />
+    <link rel="prev" title="標準モジュール" href="stdlibs.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>Python Developers Festa 2012.07  documentation</span></a></h1>
+        <h2 class="heading"><span>Appendix: パッケージ管理ツール</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="stdlibs.html">標準モジュール</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">コンテンツ</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="appendix2.html">Appendix: Pythonのコーディングスタイル</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="appendix">
+<h1>Appendix: パッケージ管理ツール<a class="headerlink" href="#appendix" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Pythonにもサードパーティ製パッケージのリポジトリがあります</p>
+<p><a class="reference external" href="http://pypi.python.org/">http://pypi.python.org/</a></p>
+<p>ここに登録されているパッケージは、パッケージ管理ツールを使って簡単にインストールすることができます。</p>
+<p>Pythonのパッケージ管理ツールはいくつか種類がありますが、今回はeasy_installを利用してみます。</p>
+<div class="section" id="id1">
+<h2>インストール<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>以下のページからdistributeソースを入手します。</p>
+<p><a class="reference external" href="http://pypi.python.org/pypi/distribute/">http://pypi.python.org/pypi/distribute/</a></p>
+<p>アーカイブはほぼ最下段にあります。</p>
+<p>ダウンロード、解凍が完了したら、distributeのディレクトリに入り、以下のコマンドでインストールします。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="go">$ python setup.py install</span>
+</pre></div>
+</div>
+<p>Mac, linuxの場合はsudoで実行するのを忘れないようにしてください。</p>
+</div>
+<div class="section" id="easy-install">
+<h2>easy_installを使ってみる<a class="headerlink" href="#easy-install" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>試しにipythonをインストールしてみます。</p>
+<p>ipythonは高機能なPython対話シェルです。標準のPython対話シェルに比べて補完や多色表示、行番号表示などの便利機能が多数搭載されています。</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="go">$ easy_install ipython</span>
+</pre></div>
+</div>
+<p>例によってMac, linuxの方はsudoを忘れないようにしてください。</p>
+<p>これだけでインストールは完了です。ターミナル(コマンドプロンプト)上でipythonと入力してipythonが起動できるか確認してみましょう。</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="stdlibs.html">標準モジュール</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">コンテンツ</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="appendix2.html">Appendix: Pythonのコーディングスタイル</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Shinya Okano.
+      このドキュメントは <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3 で生成しました。
+    </div>
+  </body>
+</html>
