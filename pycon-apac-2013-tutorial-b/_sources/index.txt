@@ -1,0 +1,61 @@
+========================================
+PyCon APAC 2013 チュートリアルB 事前準備
+========================================
+
+.. contents:: 目次
+
+概要
+====
+
+このページはPyCon APAC 2013のチュートリアルBの事前準備について記述しているものです。
+
+`<http://apac-2013.pycon.jp/ja/program/tutorials.html>`_
+
+インストールしておくもの
+========================
+
+* `Pythonダウンロードページ <http://www.python.org/download/>`_ Python2.7.xをインストールしてください。
+* `SQLiteダウンロードページ <http://www.sqlite.org/download.html>`_ Sqlite3をインストールしてください。
+* `Djangoダウンロードページ <https://www.djangoproject.com/download/>`_ Django1.5.1をインストールしてください。
+
+.. note:: Pythonの環境構築にapt、portsやvirutalenv等を使用するのは各自の判断でお願いします。ただし、うまく動作しない場合にサポートしきれないことがあるので、自己責任でお願いします。
+
+インストール状態の確認
+======================
+
+Windows
+-------
+
+Windowsの場合は、Python2.7をインストールする必要があります。インストール後に環境変数のPathの設定を行ってください( ``C:\\Python27`` と ``C:\\Python27\\Scripts`` )
+
+コマンドプロンプトでPythonのバージョンとDjangoのバージョンを確認してください。
+
+* ``python -V`` コマンドを実行して、 ``Python 2.7.5`` と表示されること
+* ``django-admin.py --version`` コマンドを実行して、 ``1.5.1`` と表示されること
+* ``sqlit3 -version`` コマンドを実行して、 ``3.X.XX ...`` と表示されること(3.6か3.7ぐらいであれば問題ないです)
+
+.. image:: _static/win_versions.png
+
+.. note:: Pythonのダウンロードの際に32bit版を選ぶようにしてください(X86-64ではないほう)
+
+MacOSX
+------
+
+MacOSX(10.6以上)は最初からPython2.7がインストールされているので、Djangoのインストールのみ行ってください。
+
+ターミナルでPythonのバージョンとDjangoのバージョンを確認してください。
+
+* ``python -V`` コマンドを実行して、 ``Python 2.7.5`` と表示されること
+* ``django-admin.py --version`` コマンドを実行して、 ``1.5.1`` と表示されること
+* ``sqlit3 -version`` コマンドを実行して、 ``3.X.XX ...`` と表示されること(3.6か3.7ぐらいであれば問題ないです)
+
+.. image:: _static/mac_versions.png
+
+講師への質問
+============
+
+事前準備等について不明な点があれば、メールかTwitterで講師へ連絡してください。
+
+:講師名: 岡野 真也(おかの しんや)
+:メール: tokibito [at] gmail.com
+:twitter: https://twitter.com/tokibito
