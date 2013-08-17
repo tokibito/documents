@@ -41,7 +41,7 @@ Windowsの場合は、Python2.7をインストールする必要があります�
 MacOSX
 ------
 
-MacOSX(10.6以上)は最初からPython2.7がインストールされているので、Djangoのインストールのみ行ってください。
+MacOSX(10.7以上)は最初からPython2.7がインストールされているので、Djangoのインストールのみ行ってください。
 
 ターミナルでPythonのバージョンとDjangoのバージョンを確認してください。
 
@@ -50,6 +50,12 @@ MacOSX(10.6以上)は最初からPython2.7がインストールされている�
 * ``sqlit3 -version`` コマンドを実行して、 ``3.X.XX ...`` と表示されること(3.6か3.7ぐらいであれば問題ないです)
 
 .. image:: _static/mac_versions.png
+
+.. note:: 
+
+   MacOSX10.6の場合はPython2.6がインストールされていますが、最新版のDjangoがうまく動かない場合があるので、Python2.7をインストールしてください。
+
+   * `Pythonダウンロードページ <http://www.python.org/download/>`_
 
 講師への質問
 ============
