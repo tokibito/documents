@@ -16,7 +16,7 @@ PyCon APAC 2013 チュートリアルB 事前準備
 
 * `Pythonダウンロードページ <http://www.python.org/download/>`_ Python2.7.xをインストールしてください。
 * `SQLiteダウンロードページ <http://www.sqlite.org/download.html>`_ Sqlite3をインストールしてください。
-* `Djangoダウンロードページ <https://www.djangoproject.com/download/>`_ Django1.5.1をインストールしてください。
+* `Djangoダウンロードページ <https://www.djangoproject.com/download/>`_ Django1.5.2をインストールしてください。
 
 .. note:: Pythonの環境構築にapt、portsやvirutalenv等を使用するのは各自の判断でお願いします。ただし、うまく動作しない場合にサポートしきれないことがあるので、自己責任でお願いします。
 
@@ -31,8 +31,8 @@ Windowsの場合は、Python2.7をインストールする必要があります�
 コマンドプロンプトでPythonのバージョンとDjangoのバージョンを確認してください。
 
 * ``python -V`` コマンドを実行して、 ``Python 2.7.5`` と表示されること
-* ``django-admin.py --version`` コマンドを実行して、 ``1.5.1`` と表示されること
-* ``sqlit3 -version`` コマンドを実行して、 ``3.X.XX ...`` と表示されること(3.6か3.7ぐらいであれば問題ないです)
+* ``django-admin.py --version`` コマンドを実行して、 ``1.5.2`` と表示されること
+* ``sqlite3 -version`` コマンドを実行して、 ``3.X.XX ...`` と表示されること(3.6か3.7ぐらいであれば問題ないです)
 
 .. image:: _static/win_versions.png
 
@@ -46,12 +46,12 @@ MacOSX(10.7以上)は最初からPython2.7がインストールされている�
 ターミナルでPythonのバージョンとDjangoのバージョンを確認してください。
 
 * ``python -V`` コマンドを実行して、 ``Python 2.7.X`` と表示されること(2.7系であれば問題ないです)
-* ``django-admin.py --version`` コマンドを実行して、 ``1.5.1`` と表示されること
-* ``sqlit3 -version`` コマンドを実行して、 ``3.X.XX ...`` と表示されること(3.6か3.7ぐらいであれば問題ないです)
+* ``django-admin.py --version`` コマンドを実行して、 ``1.5.2`` と表示されること
+* ``sqlite3 -version`` コマンドを実行して、 ``3.X.XX ...`` と表示されること(3.6か3.7ぐらいであれば問題ないです)
 
 .. image:: _static/mac_versions.png
 
-.. note:: 
+.. note::
 
    MacOSX10.6の場合はPython2.6がインストールされていますが、最新版のDjangoがうまく動かない場合があるので、Python2.7をインストールしてください。
 
